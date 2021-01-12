@@ -11,5 +11,5 @@ fun main(args: Array<String>) {
     val logger = LoggerFactory.getLogger(BackendMapv1Application::class.java)
 
     runApplication<BackendMapv1Application>(*args)
-    logger.info("----<<back-end v1>>----")
+    logger.info("\n\n[----<<back-end v1>>----]\n\n")
 }
