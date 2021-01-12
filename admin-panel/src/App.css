@@ -1,0 +1,94 @@
+.App {
+  text-align: center;
+  justify-content: center;
+}
+.container {
+  margin-top: 48px;
+}
+@media screen and (min-width: 576px) {
+  /* .container {
+    margin-left: 220px;
+    padding: 1em;
+  } */
+}
+body {
+  font-size: 0.875rem;
+  height: calc(100vh - 48px);
+}
+
+.feather {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+}
+
+/*
+ * Sidebar
+ */
+.sbar {
+  margin-top: 48px;
+}
+.sidebar {
+  margin-left: -10px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100; /* Behind the navbar */
+  padding: 0;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 48px; /* Height of navbar */
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  /*overflow-y: auto;  Scrollable contents if viewport is shorter than content. */
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  font-size: larger;
+  color: #333;
+  text-align: left;
+  margin-left: 1em;
+  text-decoration: none;
+}
+
+.sidebar .nav-link.active {
+  color: #007bff;
+  margin-top: 50px;
+  font-size: larger;
+}
+.sidebar .nav-link:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-heading {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+/*
+ * Navbar
+ */
+
+/*
+ * Utilities
+ */
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.form-group {
+  padding: 1em;
+  font-weight: bold;
+  background-color: #def3fd;
+}
