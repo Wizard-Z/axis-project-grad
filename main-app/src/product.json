@@ -1,0 +1,22 @@
+{
+    "products":[
+        {
+            "imgUrl":"https://tinyurl.com/ycgw4ghn",
+            "productName":"Car Insurance",
+            "productDescription":"Ensure peace of mind by purchasing a comprehensive Car Insurance policy to pay for repairs to your vehicle and third party liabilities. Make sure that expensive repairs to your vehicle do not dent your pocket.",
+            "btnId":"carInsurance"
+        },
+        {
+            "imgUrl":"https://tinyurl.com/y7kvcw7b",
+            "productName":"Home Insurance",
+            "productDescription":"Axis Bank in collaboration with Tata AIG offers Home Insurance Policy, that provides you with a comprehensive protection package to secure your home. This policy protects your home from damages due to perils like fire, lightning, explosion/implosion, aircraft damage, riot, strike and malicious damage and many more..",
+            "btnId":"homeInsurance"
+        },
+        {
+            "imgUrl":"https://tinyurl.com/y9fe7deg",
+            "productName":"Travel Insurance",
+            "productDescription":"Buy travel insurance online with a few clicks and enjoy a hassle-free trip. Choose your destination and get the best quotes for our range of travel insurance.",
+            "btnId":"travelInsurance"
+        }
+    ]
+}
