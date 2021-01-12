@@ -44,7 +44,7 @@ export default function Dashboard_copy() {
       });
     }
     if (category === "plots") {
-      setItems({ content: <Plots />, title: "Sales trends" });
+      setItems({ content: <Plots />, title: "Sales trends Analysis" });
     }
     if (category === "addPartner") {
       setItems({ content: <AddPartnerForm />, title: "Add partner!" });
