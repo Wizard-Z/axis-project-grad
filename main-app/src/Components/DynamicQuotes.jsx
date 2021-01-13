@@ -1,9 +1,17 @@
 import { useLocation } from "react-router-dom";
-import { Card, Col, Jumbotron, Row } from "react-bootstrap";
+import {
+  Card,
+  Col,
+  Jumbotron,
+  Row,
+  DropdownButton,
+  Dropdown,
+} from "react-bootstrap";
 import "./dynamicQuotes.css";
 import PartnerSerivce from "../Service/PartnerService";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import loadingGif from "../images/loading2.gif";
+import MultipleQuotes from "./MultipleQuotes";
 function DynamicQuotes(props) {
   console.log("I am dynamic quotes !");
   const location = useLocation();
@@ -17,12 +25,16 @@ function DynamicQuotes(props) {
   let formData = props.location.state.data;
   console.log("FormData(quotesPage) ", formData);
   const [multipleQuotes, setMultipleQuotes] = useState([]);
-  const compareQuotes = () => {
-    console.log("hello");
+  useEffect(() => {
     PartnerSerivce.getMultipleQuotes(formData, productName, id).then((res) => {
       console.log("----->>>> MULTI-res", res.data);
       setMultipleQuotes(res.data);
+      console.log("USe Effect data", multipleQuotes);
     });
+  }, multipleQuotes);
+  const compareQuotes = () => {
+    console.log("hello");
+
     var toggle = document.getElementById("showquotes");
     if (buttontext === "Compare Quotes") {
       setbuttontext("Hide Quotes");
@@ -35,7 +47,30 @@ function DynamicQuotes(props) {
     } else {
       toggle.style.visibility = "visible";
     }
-    console.log("multiple " + multipleQuotes);
+    console.log("CompareQuotes Clicked data-->" + multipleQuotes);
+  };
+
+  const sortAscending = (e) => {
+    setMultipleQuotes([
+      ...multipleQuotes.sort((a, b) => {
+        return JSON.parse(a).price - JSON.parse(b).price;
+      }),
+    ]);
+
+    console.log("This is sorted ascending quotes ", multipleQuotes);
+  };
+  const sortDescending = (e) => {
+    let tempArr = multipleQuotes.sort((a, b) => {
+      return JSON.parse(b).price - JSON.parse(a).price;
+    });
+
+    setMultipleQuotes([
+      ...multipleQuotes.sort((a, b) => {
+        return JSON.parse(b).price - JSON.parse(a).price;
+      }),
+    ]);
+
+    console.log("This is sorted descending quotes ", multipleQuotes);
   };
 
   return (
@@ -81,45 +116,22 @@ function DynamicQuotes(props) {
         </button>
         <br />
         <br />
+
         <div id="showquotes">
           {multipleQuotes.length ? (
             <div>
-              {multipleQuotes.map((multi) => (
-                <div>
-                  <Row
-                    style={{ textAlign: "center", justifyContent: "center" }}
-                  >
-                    <Card style={{ width: "1000px" }} id="cards">
-                      <Card.Body>
-                        <Row>
-                          <Col>
-                            <img
-                              style={{
-                                boxShadow:
-                                  "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-                              }}
-                              width="100"
-                              height="100"
-                              background="#777"
-                              color="#777"
-                              className="rounded-circle"
-                              src={JSON.parse(multi).logo}
-                            ></img>
-                          </Col>
-                          <Col>
-                            <h5>{JSON.parse(multi).name}</h5>
-                          </Col>
-                          <Col>
-                            <h6>Rs. {JSON.parse(multi).price}</h6>
-                          </Col>
-                        </Row>
-                      </Card.Body>
-                    </Card>
-                  </Row>
-                  <br />
-                  <br />
-                </div>
-              ))}
+              <DropdownButton id="dropdown-basic-button" title="Sort Quotes By">
+                <Dropdown.Item onClick={() => sortDescending()}>
+                  Price: Highest to Lowest
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => sortAscending()}>
+                  Price: Lowest to Highest
+                </Dropdown.Item>
+                <Dropdown.Item href="#/action-3">Popularity</Dropdown.Item>
+              </DropdownButton>
+              <br />
+              <br />
+              <MultipleQuotes multipleQuotes={multipleQuotes} />
             </div>
           ) : (
             <div className="container">
