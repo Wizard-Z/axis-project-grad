@@ -111,15 +111,15 @@ class AddPartnerForm extends Component {
               placeholder="Enter Id"
             ></input>
             <label htmlFor="name">Partner-name? </label>
-            <input
-              type="text"
-              name="name"
-              value={name}
-              onChange={this.onChangeHandle}
-              className="form-control"
-              placeholder="Provide Partner-name"
-              required
-            ></input>
+            <select name="name" value={name} onChange={this.onChangeHandle}
+            className="form-control" 
+            >
+              <option selected>Select partner....</option>
+              <option value="TATA AIG">TATA AIG</option>
+              <option value="BHARTI AXA">BHARTI AXA</option>
+              <option value="AXIS HOME">AXIS HOME</option>
+              <option value="RELIANCE">RELIANCE</option>
+              </select>
             <label htmlFor="logo">Logo Url </label>
             <input
               type="text"
@@ -141,15 +141,17 @@ class AddPartnerForm extends Component {
               required
             ></input>
             <label htmlFor="insuranceType">Enter Insurance Type</label>
-            <input
-              type="text"
-              name="insuranceType"
-              value={insuranceType}
-              onChange={this.onChangeHandle}
-              className="form-control"
-              placeholder="Insurance Type .. car, home etc.."
-              required
-            ></input>
+
+            <select
+            name="insuranceType"
+            value={insuranceType}
+            onChange={this.onChangeHandle}
+            className="form-control">
+              <option selected>Select the Product...</option>
+              <option value="CarInsurance"> Car Insurance</option>
+              <option value="TravelInsurance"> Travel Insurance</option>
+              <option value="HomeInsurance"> Home Insurance</option>
+           </select>
             <label htmlfor="endPoints">End-Points</label>
             <input
               type="text"
