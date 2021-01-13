@@ -66,6 +66,70 @@
         }
       ]
     },
+        {
+      "responses": 
+[        {
+          "is": {
+            "statusCode": 200,
+            "body": "[{\"name\":\"I am Reliance (MOTOR)\",\"price\":\"9991\"}]"
+          }
+        }
+      ],
+      "predicates": [
+        {
+          "or": [
+            {
+              "and": [
+                {
+                  "matches": {
+                    "query": {
+                      "city": "\\w+"
+                    }
+                  }
+                },
+                {
+                  "equals": {
+                    "path": "/motor-reliance/quotes/"
+                  }
+                },
+                {
+                  "equals": {
+                    "method": "POST"
+                  }
+                }
+              ]
+            },
+            {
+              "and": [
+                {
+                  "equals": {
+                    "method": "POST"
+                  }
+                },
+                {
+                  "equals": {
+                    "path": "/motor-reliance/quotes/"
+                  }
+                },
+                {
+                  "matches": {
+                    "body": {
+                      "City": "\\w+",
+                      "RTO": "\\w+",
+                      "Name": "\\w+",
+                      "Type": "\\w+",
+                      "Year": "\\w+",
+                      "Phone": "\\w+"
+
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
     {
       "responses": 
 [        {
