@@ -32,7 +32,7 @@ class PartnerController(
     @ApiOperation(value = "test connection")
     @GetMapping("/echo")
     fun echo(): String {
-        return "Hello from Spring-boot, AZURE-WEB APP!"
+        return "Hello from Spring-boot, AZURE-WEB APP! version2"
     }
 
     @ApiOperation(value = "check url response")
