@@ -30,39 +30,69 @@ class PartnerServiceTest {
     var partnerRepository: PartnerRepository? = null
 
     @MockBean
-    var partnerListRepository: PartnerListRepository? =null
+    var partnerListRepository: PartnerListRepository? = null
 
-    @MockBean
-    val mongoTemplate: MongoTemplate?=null
+
 
     @Test
     fun getAllTest() {
         val partnerList: MutableList<Partner> = ArrayList()
 
-        partnerList.add(Partner(138, "https://tinyurl.com/ya22aob9", "AXIS MOTOR", "Get Affordable Insurance Plans for Car, Bike, Health & Travel with the Trust of TATA. Quick & Hassle-Free Online Process with No Paperwork. 5 Cr+ Happy Customers. Get Quote. Zero Touch Insurance. Policy in 3 iteps. Comprehensive Plans.",
-                "CarInsurance", "http://localhost:8089/motor-axis-insure/quotes", "{\"fields\": [ { \"label\":\"City\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"city\", \"placeholder\":\" Enter City eg (Delhi or Mumbai)\",\"validation\":{\"required\":\"city is mandatory\" }}, { \"label\":\"RTO\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"RTO\", \"placeholder\":\" Enter RTO eg (DL01 or MH01)\" ,\"validation\":{\"required\":\"RTO is mandatory\" }}, { \"label\":\"Brand Name\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"brandName\", \"placeholder\":\" Enter Brand Name eg (Hyundai or Audi)\",\"validation\":{\"required\":\"Brand Name is mandatory\" } }, { \"label\":\"Fuel Type\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"fuelType\", \"placeholder\":\" Enter Fuel type eg (Petrol or Diesel)\",\"validation\":{\"required\":\"Fuel Type is mandatory\" } }, { \"label\":\"Model Year\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"modelYear\", \"placeholder\":\" Enter Model Year\",\"validation\":{\"required\":\"Model is mandatory\" } } ]}",
-                true, "{\"City\":\"city\",\"RTO\":\"RTO\",\"Name\":\"brandName\",\"Type\":\"fuelType\",\"Year\":\"modelYear\",\"Phone\":\"phoneNumber\"}"));
-        partnerList.add(Partner(139, "https://tinyurl.com/ydgvjpgx", "BHARTI AXA", "Claim Service of the Year Award. Buy New/Renew Car, Health & Bike Insurance Online Now. Get Comprehensive Insurance Solutions by Bharti AXA. 27Lacs+ Claim Settled.",
-                "TravelInsurance", "http://localhost:8089/travel-bharti-axa/quotes", "{\"fields\": [ { \"label\":\"Destination\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"destination\", \"placeholder\":\"Where you wish to travel..\",\"validation\":{\"required\":\"*Destination is mandatory\" }},{ \"label\":\"Travellers\", \"id\":\"tex\", \"type\":\"number\", \"name\":\"travellers\", \"placeholder\":\"Number of Travellers\",\"validation\":{\"required\":\"*Travellers is mandatory\" }},{ \"label\":\"Journey Start Date\", \"id\":\"tex\", \"type\":\"date\", \"name\":\"startDate\", \"placeholder\":\"Enter journey start Date\",\"validation\":{\"required\":\"*Journey Date is mandatory\" }},{ \"label\":\"Return Date\", \"id\":\"tex\", \"type\":\"date\", \"name\":\"returnDate\", \"placeholder\":\"Enter return date\",\"validation\":{\"required\":\"*Return date is mandatory\" }},{ \"label\":\"Phone Number\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"phoneNumber\", \"placeholder\":\"Enter Phone Number\",\"validation\":{\"required\":\"*Phone is mandatory\" }} ]}",
-                true, "{\"City\":\"city\",\"RTO\":\"RTO\",\"Name\":\"brandName\",\"Type\":\"fuelType\",\"Year\":\"modelYear\",\"Phone\":\"phoneNumber\"}"));
+        partnerList.add(
+            Partner(
+                138,
+                "https://tinyurl.com/ya22aob9",
+                "AXIS MOTOR",
+                "Get Affordable Insurance Plans for Car, Bike, Health & Travel with the Trust of TATA. Quick & Hassle-Free Online Process with No Paperwork. 5 Cr+ Happy Customers. Get Quote. Zero Touch Insurance. Policy in 3 iteps. Comprehensive Plans.",
+                "CarInsurance",
+                "http://localhost:8089/motor-axis-insure/quotes",
+                "{\"fields\": [ { \"label\":\"City\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"city\", \"placeholder\":\" Enter City eg (Delhi or Mumbai)\",\"validation\":{\"required\":\"city is mandatory\" }}, { \"label\":\"RTO\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"RTO\", \"placeholder\":\" Enter RTO eg (DL01 or MH01)\" ,\"validation\":{\"required\":\"RTO is mandatory\" }}, { \"label\":\"Brand Name\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"brandName\", \"placeholder\":\" Enter Brand Name eg (Hyundai or Audi)\",\"validation\":{\"required\":\"Brand Name is mandatory\" } }, { \"label\":\"Fuel Type\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"fuelType\", \"placeholder\":\" Enter Fuel type eg (Petrol or Diesel)\",\"validation\":{\"required\":\"Fuel Type is mandatory\" } }, { \"label\":\"Model Year\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"modelYear\", \"placeholder\":\" Enter Model Year\",\"validation\":{\"required\":\"Model is mandatory\" } } ]}",
+                true,
+                "{\"City\":\"city\",\"RTO\":\"RTO\",\"Name\":\"brandName\",\"Type\":\"fuelType\",\"Year\":\"modelYear\",\"Phone\":\"phoneNumber\"}"
+            )
+        );
+        partnerList.add(
+            Partner(
+                139,
+                "https://tinyurl.com/ydgvjpgx",
+                "BHARTI AXA",
+                "Claim Service of the Year Award. Buy New/Renew Car, Health & Bike Insurance Online Now. Get Comprehensive Insurance Solutions by Bharti AXA. 27Lacs+ Claim Settled.",
+                "TravelInsurance",
+                "http://localhost:8089/travel-bharti-axa/quotes",
+                "{\"fields\": [ { \"label\":\"Destination\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"destination\", \"placeholder\":\"Where you wish to travel..\",\"validation\":{\"required\":\"*Destination is mandatory\" }},{ \"label\":\"Travellers\", \"id\":\"tex\", \"type\":\"number\", \"name\":\"travellers\", \"placeholder\":\"Number of Travellers\",\"validation\":{\"required\":\"*Travellers is mandatory\" }},{ \"label\":\"Journey Start Date\", \"id\":\"tex\", \"type\":\"date\", \"name\":\"startDate\", \"placeholder\":\"Enter journey start Date\",\"validation\":{\"required\":\"*Journey Date is mandatory\" }},{ \"label\":\"Return Date\", \"id\":\"tex\", \"type\":\"date\", \"name\":\"returnDate\", \"placeholder\":\"Enter return date\",\"validation\":{\"required\":\"*Return date is mandatory\" }},{ \"label\":\"Phone Number\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"phoneNumber\", \"placeholder\":\"Enter Phone Number\",\"validation\":{\"required\":\"*Phone is mandatory\" }} ]}",
+                true,
+                "{\"City\":\"city\",\"RTO\":\"RTO\",\"Name\":\"brandName\",\"Type\":\"fuelType\",\"Year\":\"modelYear\",\"Phone\":\"phoneNumber\"}"
+            )
+        );
 
-        Mockito.`when`(partnerRepository
-                ?.findAll()).thenReturn(partnerList)
-        assertEquals(2, partnerService?.getAll()
-                ?.size)
+        Mockito.`when`(
+            partnerRepository
+                ?.findAll()
+        ).thenReturn(partnerList)
+        assertEquals(
+            2, partnerService?.getAll()
+                ?.size
+        )
 
 
     }
 
     @Test
-    fun findByIdTest()
-    {
-   val partner=Partner(138, "https://tinyurl.com/ya22aob9", "AXIS MOTOR", "Get Affordable Insurance Plans for Car, Bike, Health & Travel with the Trust of TATA. Quick & Hassle-Free Online Process with No Paperwork. 5 Cr+ Happy Customers. Get Quote. Zero Touch Insurance. Policy in 3 iteps. Comprehensive Plans.",
-           "CarInsurance", "http://localhost:8089/motor-axis-insure/quotes", "{\"fields\": [ { \"label\":\"City\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"city\", \"placeholder\":\" Enter City eg (Delhi or Mumbai)\",\"validation\":{\"required\":\"city is mandatory\" }}, { \"label\":\"RTO\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"RTO\", \"placeholder\":\" Enter RTO eg (DL01 or MH01)\" ,\"validation\":{\"required\":\"RTO is mandatory\" }}, { \"label\":\"Brand Name\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"brandName\", \"placeholder\":\" Enter Brand Name eg (Hyundai or Audi)\",\"validation\":{\"required\":\"Brand Name is mandatory\" } }, { \"label\":\"Fuel Type\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"fuelType\", \"placeholder\":\" Enter Fuel type eg (Petrol or Diesel)\",\"validation\":{\"required\":\"Fuel Type is mandatory\" } }, { \"label\":\"Model Year\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"modelYear\", \"placeholder\":\" Enter Model Year\",\"validation\":{\"required\":\"Model is mandatory\" } } ]}",
-           true, "{\"City\":\"city\",\"RTO\":\"RTO\",\"Name\":\"brandName\",\"Type\":\"fuelType\",\"Year\":\"modelYear\",\"Phone\":\"phoneNumber\"}");
+    fun findByIdTest() {
+        val partner = Partner(
+            138,
+            "https://tinyurl.com/ya22aob9",
+            "AXIS MOTOR",
+            "Get Affordable Insurance Plans for Car, Bike, Health & Travel with the Trust of TATA. Quick & Hassle-Free Online Process with No Paperwork. 5 Cr+ Happy Customers. Get Quote. Zero Touch Insurance. Policy in 3 iteps. Comprehensive Plans.",
+            "CarInsurance",
+            "http://localhost:8089/motor-axis-insure/quotes",
+            "{\"fields\": [ { \"label\":\"City\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"city\", \"placeholder\":\" Enter City eg (Delhi or Mumbai)\",\"validation\":{\"required\":\"city is mandatory\" }}, { \"label\":\"RTO\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"RTO\", \"placeholder\":\" Enter RTO eg (DL01 or MH01)\" ,\"validation\":{\"required\":\"RTO is mandatory\" }}, { \"label\":\"Brand Name\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"brandName\", \"placeholder\":\" Enter Brand Name eg (Hyundai or Audi)\",\"validation\":{\"required\":\"Brand Name is mandatory\" } }, { \"label\":\"Fuel Type\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"fuelType\", \"placeholder\":\" Enter Fuel type eg (Petrol or Diesel)\",\"validation\":{\"required\":\"Fuel Type is mandatory\" } }, { \"label\":\"Model Year\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"modelYear\", \"placeholder\":\" Enter Model Year\",\"validation\":{\"required\":\"Model is mandatory\" } } ]}",
+            true,
+            "{\"City\":\"city\",\"RTO\":\"RTO\",\"Name\":\"brandName\",\"Type\":\"fuelType\",\"Year\":\"modelYear\",\"Phone\":\"phoneNumber\"}"
+        );
 
         partnerRepository
-                ?.save(partner);
+            ?.save(partner);
         val id = 138
         Mockito.`when`(partnerRepository?.findById(138)).thenReturn(Optional.of(partner))
         assertEquals(id, partnerService?.findById(138)?.id)
@@ -70,14 +100,23 @@ class PartnerServiceTest {
     }
 
     @Test
-    fun findByNameTest()
-    {
+    fun findByNameTest() {
         val partnerList: MutableList<Partner> = ArrayList()
 
 
-        partnerList.add(Partner(138, "https://tinyurl.com/ya22aob9", "AXIS MOTOR", "Get Affordable Insurance Plans for Car, Bike, Health & Travel with the Trust of TATA. Quick & Hassle-Free Online Process with No Paperwork. 5 Cr+ Happy Customers. Get Quote. Zero Touch Insurance. Policy in 3 iteps. Comprehensive Plans.",
-                "CarInsurance", "http://localhost:8089/motor-axis-insure/quotes", "{\"fields\": [ { \"label\":\"City\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"city\", \"placeholder\":\" Enter City eg (Delhi or Mumbai)\",\"validation\":{\"required\":\"city is mandatory\" }}, { \"label\":\"RTO\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"RTO\", \"placeholder\":\" Enter RTO eg (DL01 or MH01)\" ,\"validation\":{\"required\":\"RTO is mandatory\" }}, { \"label\":\"Brand Name\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"brandName\", \"placeholder\":\" Enter Brand Name eg (Hyundai or Audi)\",\"validation\":{\"required\":\"Brand Name is mandatory\" } }, { \"label\":\"Fuel Type\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"fuelType\", \"placeholder\":\" Enter Fuel type eg (Petrol or Diesel)\",\"validation\":{\"required\":\"Fuel Type is mandatory\" } }, { \"label\":\"Model Year\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"modelYear\", \"placeholder\":\" Enter Model Year\",\"validation\":{\"required\":\"Model is mandatory\" } } ]}",
-                true, "{\"City\":\"city\",\"RTO\":\"RTO\",\"Name\":\"brandName\",\"Type\":\"fuelType\",\"Year\":\"modelYear\",\"Phone\":\"phoneNumber\"}"));
+        partnerList.add(
+            Partner(
+                138,
+                "https://tinyurl.com/ya22aob9",
+                "AXIS MOTOR",
+                "Get Affordable Insurance Plans for Car, Bike, Health & Travel with the Trust of TATA. Quick & Hassle-Free Online Process with No Paperwork. 5 Cr+ Happy Customers. Get Quote. Zero Touch Insurance. Policy in 3 iteps. Comprehensive Plans.",
+                "CarInsurance",
+                "http://localhost:8089/motor-axis-insure/quotes",
+                "{\"fields\": [ { \"label\":\"City\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"city\", \"placeholder\":\" Enter City eg (Delhi or Mumbai)\",\"validation\":{\"required\":\"city is mandatory\" }}, { \"label\":\"RTO\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"RTO\", \"placeholder\":\" Enter RTO eg (DL01 or MH01)\" ,\"validation\":{\"required\":\"RTO is mandatory\" }}, { \"label\":\"Brand Name\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"brandName\", \"placeholder\":\" Enter Brand Name eg (Hyundai or Audi)\",\"validation\":{\"required\":\"Brand Name is mandatory\" } }, { \"label\":\"Fuel Type\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"fuelType\", \"placeholder\":\" Enter Fuel type eg (Petrol or Diesel)\",\"validation\":{\"required\":\"Fuel Type is mandatory\" } }, { \"label\":\"Model Year\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"modelYear\", \"placeholder\":\" Enter Model Year\",\"validation\":{\"required\":\"Model is mandatory\" } } ]}",
+                true,
+                "{\"City\":\"city\",\"RTO\":\"RTO\",\"Name\":\"brandName\",\"Type\":\"fuelType\",\"Year\":\"modelYear\",\"Phone\":\"phoneNumber\"}"
+            )
+        );
 
 
         Mockito.`when`(partnerRepository?.findByName("AXIS MOTOR")).thenReturn(partnerList)
@@ -86,12 +125,14 @@ class PartnerServiceTest {
     }
 
     @Test
-    fun getPartnerDetailTest()
-    {
+    fun getPartnerDetailTest() {
 
 
-        val partnerDetail= PartnerDetail(
-                138, "AXIS MOTOR", "https://tinyurl.com/ya22aob9", "Get Affordable Insurance Plans for Car, Bike, Health & Travel with the Trust of TATA. Quick & Hassle-Free Online Process with No Paperwork. 5 Cr+ Happy Customers. Get Quote. Zero Touch Insurance. Policy in 3 iteps. Comprehensive Plans.",
+        val partnerDetail = PartnerDetail(
+            138,
+            "AXIS MOTOR",
+            "https://tinyurl.com/ya22aob9",
+            "Get Affordable Insurance Plans for Car, Bike, Health & Travel with the Trust of TATA. Quick & Hassle-Free Online Process with No Paperwork. 5 Cr+ Happy Customers. Get Quote. Zero Touch Insurance. Policy in 3 iteps. Comprehensive Plans.",
         );
 
 
@@ -99,34 +140,49 @@ class PartnerServiceTest {
         assertEquals("AXIS MOTOR", partnerService?.getPartnerDetails("AXIS MOTOR")?.name);
 
     }
+
     @Test
-    fun getPartnersDetailsTest()
-    {
+    fun getPartnersDetailsTest() {
         val partnerDetailsList: MutableList<PartnerDetail> = ArrayList()
-        partnerDetailsList.add(PartnerDetail(
-                138, "AXIS MOTOR", "https://tinyurl.com/ya22aob9", "Get Affordable Insurance Plans for Car, Bike, Health & Travel with the Trust of TATA. Quick & Hassle-Free Online Process with No Paperwork. 5 Cr+ Happy Customers. Get Quote. Zero Touch Insurance. Policy in 3 iteps. Comprehensive Plans.",
-        ));
-        partnerDetailsList.add(PartnerDetail(
-                139, "BHARTI AXA", "https://tinyurl.com/ydgvjpgx", "Claim Service of the Year Award. Buy New/Renew Car, Health & Bike Insurance Online Now. Get Comprehensive Insurance Solutions by Bharti AXA. 27Lacs+ Claim Settled.",
-        ));
+        partnerDetailsList.add(
+            PartnerDetail(
+                138,
+                "AXIS MOTOR",
+                "https://tinyurl.com/ya22aob9",
+                "Get Affordable Insurance Plans for Car, Bike, Health & Travel with the Trust of TATA. Quick & Hassle-Free Online Process with No Paperwork. 5 Cr+ Happy Customers. Get Quote. Zero Touch Insurance. Policy in 3 iteps. Comprehensive Plans.",
+            )
+        );
+        partnerDetailsList.add(
+            PartnerDetail(
+                139,
+                "BHARTI AXA",
+                "https://tinyurl.com/ydgvjpgx",
+                "Claim Service of the Year Award. Buy New/Renew Car, Health & Bike Insurance Online Now. Get Comprehensive Insurance Solutions by Bharti AXA. 27Lacs+ Claim Settled.",
+            )
+        );
         Mockito.`when`(partnerListRepository?.findAll()).thenReturn(partnerDetailsList);
         assertEquals(2, partnerService?.getPartnersDetails()?.size)
 
     }
 
     @Test
-    fun addPartnerTest()
-    {
-        val partner=Partner(138, "https://tinyurl.com/ya22aob9", "AXIS MOTOR", "Get Affordable Insurance Plans for Car, Bike, Health & Travel with the Trust of TATA. Quick & Hassle-Free Online Process with No Paperwork. 5 Cr+ Happy Customers. Get Quote. Zero Touch Insurance. Policy in 3 iteps. Comprehensive Plans.",
-                "CarInsurance", "http://localhost:8089/motor-axis-insure/quotes", "{\"fields\": [ { \"label\":\"City\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"city\", \"placeholder\":\" Enter City eg (Delhi or Mumbai)\",\"validation\":{\"required\":\"city is mandatory\" }}, { \"label\":\"RTO\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"RTO\", \"placeholder\":\" Enter RTO eg (DL01 or MH01)\" ,\"validation\":{\"required\":\"RTO is mandatory\" }}, { \"label\":\"Brand Name\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"brandName\", \"placeholder\":\" Enter Brand Name eg (Hyundai or Audi)\",\"validation\":{\"required\":\"Brand Name is mandatory\" } }, { \"label\":\"Fuel Type\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"fuelType\", \"placeholder\":\" Enter Fuel type eg (Petrol or Diesel)\",\"validation\":{\"required\":\"Fuel Type is mandatory\" } }, { \"label\":\"Model Year\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"modelYear\", \"placeholder\":\" Enter Model Year\",\"validation\":{\"required\":\"Model is mandatory\" } } ]}",
-                true, "{\"City\":\"city\",\"RTO\":\"RTO\",\"Name\":\"brandName\",\"Type\":\"fuelType\",\"Year\":\"modelYear\",\"Phone\":\"phoneNumber\"}");
+    fun addPartnerTest() {
+        val partner = Partner(
+            138,
+            "https://tinyurl.com/ya22aob9",
+            "AXIS MOTOR",
+            "Get Affordable Insurance Plans for Car, Bike, Health & Travel with the Trust of TATA. Quick & Hassle-Free Online Process with No Paperwork. 5 Cr+ Happy Customers. Get Quote. Zero Touch Insurance. Policy in 3 iteps. Comprehensive Plans.",
+            "CarInsurance",
+            "http://localhost:8089/motor-axis-insure/quotes",
+            "{\"fields\": [ { \"label\":\"City\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"city\", \"placeholder\":\" Enter City eg (Delhi or Mumbai)\",\"validation\":{\"required\":\"city is mandatory\" }}, { \"label\":\"RTO\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"RTO\", \"placeholder\":\" Enter RTO eg (DL01 or MH01)\" ,\"validation\":{\"required\":\"RTO is mandatory\" }}, { \"label\":\"Brand Name\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"brandName\", \"placeholder\":\" Enter Brand Name eg (Hyundai or Audi)\",\"validation\":{\"required\":\"Brand Name is mandatory\" } }, { \"label\":\"Fuel Type\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"fuelType\", \"placeholder\":\" Enter Fuel type eg (Petrol or Diesel)\",\"validation\":{\"required\":\"Fuel Type is mandatory\" } }, { \"label\":\"Model Year\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"modelYear\", \"placeholder\":\" Enter Model Year\",\"validation\":{\"required\":\"Model is mandatory\" } } ]}",
+            true,
+            "{\"City\":\"city\",\"RTO\":\"RTO\",\"Name\":\"brandName\",\"Type\":\"fuelType\",\"Year\":\"modelYear\",\"Phone\":\"phoneNumber\"}"
+        );
         Mockito.`when`(partnerRepository?.save(partner)).thenReturn(partner)
 
         assertThat(partnerService?.addPartner(partner)).isEqualTo(partner)
 
     }
-
-
 
 
 }
