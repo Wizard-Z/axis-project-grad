@@ -4,18 +4,22 @@ import com.axis.com.axis.model.Partner
 import com.axis.com.axis.model.PartnerDetail
 import com.axis.com.axis.repository.PartnerListRepository
 import com.axis.com.axis.repository.PartnerRepository
-import org.mockito.Mockito.verify
-
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito
-import org.mockito.Mockito.atLeastOnce
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
+import org.springframework.data.mongodb.core.MongoTemplate
+import org.springframework.data.mongodb.core.distinct
+import org.springframework.data.mongodb.core.find
+import org.springframework.data.mongodb.core.query.Criteria
+import org.springframework.data.mongodb.core.query.Query
 import java.util.*
 
-
+@AutoConfigureMockMvc
 @SpringBootTest
 class PartnerServiceTest {
 
@@ -27,6 +31,9 @@ class PartnerServiceTest {
 
     @MockBean
     var partnerListRepository: PartnerListRepository? =null
+
+    @MockBean
+    val mongoTemplate: MongoTemplate?=null
 
     @Test
     fun getAllTest() {
@@ -107,7 +114,20 @@ class PartnerServiceTest {
 
     }
 
-    
+    @Test
+    fun addPartnerTest()
+    {
+        val partner=Partner(138, "https://tinyurl.com/ya22aob9", "AXIS MOTOR", "Get Affordable Insurance Plans for Car, Bike, Health & Travel with the Trust of TATA. Quick & Hassle-Free Online Process with No Paperwork. 5 Cr+ Happy Customers. Get Quote. Zero Touch Insurance. Policy in 3 iteps. Comprehensive Plans.",
+                "CarInsurance", "http://localhost:8089/motor-axis-insure/quotes", "{\"fields\": [ { \"label\":\"City\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"city\", \"placeholder\":\" Enter City eg (Delhi or Mumbai)\",\"validation\":{\"required\":\"city is mandatory\" }}, { \"label\":\"RTO\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"RTO\", \"placeholder\":\" Enter RTO eg (DL01 or MH01)\" ,\"validation\":{\"required\":\"RTO is mandatory\" }}, { \"label\":\"Brand Name\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"brandName\", \"placeholder\":\" Enter Brand Name eg (Hyundai or Audi)\",\"validation\":{\"required\":\"Brand Name is mandatory\" } }, { \"label\":\"Fuel Type\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"fuelType\", \"placeholder\":\" Enter Fuel type eg (Petrol or Diesel)\",\"validation\":{\"required\":\"Fuel Type is mandatory\" } }, { \"label\":\"Model Year\", \"id\":\"tex\", \"type\":\"text\", \"name\":\"modelYear\", \"placeholder\":\" Enter Model Year\",\"validation\":{\"required\":\"Model is mandatory\" } } ]}",
+                true, "{\"City\":\"city\",\"RTO\":\"RTO\",\"Name\":\"brandName\",\"Type\":\"fuelType\",\"Year\":\"modelYear\",\"Phone\":\"phoneNumber\"}");
+        Mockito.`when`(partnerRepository?.save(partner)).thenReturn(partner)
+
+        assertThat(partnerService?.addPartner(partner)).isEqualTo(partner)
+
+    }
+
+
+
 
 }
 
