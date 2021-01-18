@@ -24,11 +24,11 @@ jobs:
       run: mvn clean install
       working-directory: backend-mapv1
 
-    - name: Deploy to Azure Web App
-      uses: azure/webapps-deploy@v2
+#     - name: Deploy to Azure Web App
+#       uses: azure/webapps-deploy@v2
       
-      with:
-        app-name: 'insurance-backendv1'
-        slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_783c570bfefe4b1ca2ec5484c71c4029 }}
-        package: '${{ github.workspace }}/backend-mapv1/target/*.jar'
+#       with:
+#         app-name: 'insurance-backendv1'
+#         slot-name: 'production'
+#         publish-profile: ${{ secrets.AzureAppService_PublishProfile_783c570bfefe4b1ca2ec5484c71c4029 }}
+#         package: '${{ github.workspace }}/backend-mapv1/target/*.jar'
