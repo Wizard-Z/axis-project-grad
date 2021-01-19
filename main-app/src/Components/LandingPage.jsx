@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import PartnerSerivce from "../Service/PartnerService";
 import loadingRing2 from "../images/loadingRing2.gif";
+import bot from "../images/botIcon6.jpeg";
 
 import {
   Carousel,
@@ -17,7 +18,16 @@ import {
 } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import SimpleForm from "./SimpleForm";
 function LandingPage() {
+  let [showChat, setShowChat] = useState(false);
+
+  const startChat = () => {
+    setShowChat(true);
+  };
+  const hideChat = () => {
+    setShowChat(false);
+  };
   const history = useHistory();
   // let { products } = product;
   const [partners, setProducts] = useState([]);
@@ -517,6 +527,45 @@ function LandingPage() {
           </Navbar.Collapse>
         </Navbar>
       </main>
+      <div className="bot">
+        <div style={{ display: showChat ? "" : "none" }}>
+          <SimpleForm></SimpleForm>
+        </div>
+
+        <div>
+          {!showChat ? (
+            <img
+              src={bot}
+              style={{
+                boxShadow:
+                  "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+                marginLeft: "250px",
+              }}
+              width="70"
+              height="70"
+              background="#777"
+              color="#777"
+              className="rounded-circle"
+              onClick={() => startChat()}
+            ></img>
+          ) : (
+            <img
+              src={bot}
+              style={{
+                boxShadow:
+                  "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+                marginLeft: "250px",
+              }}
+              width="70"
+              height="70"
+              background="#777"
+              color="#777"
+              className="rounded-circle"
+              onClick={() => hideChat()}
+            ></img>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

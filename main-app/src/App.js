@@ -7,9 +7,13 @@ import Testing from "./Components/Testing";
 import NavBarComponent from "./Components/NavBarComponent";
 import Error from "./Components/Error"
 import DynamicQuotes from "./Components/DynamicQuotes";
+import SimpleForm from "./Components/SimpleForm"
 
+
+import React, { useEffect, useState } from "react";
 function App() {
- 
+
+
   return (
     <div className="app">
       <NavBarComponent/>
@@ -38,8 +42,10 @@ function App() {
             component={Testing}
           ></Route>
           <Route component={Error}/>
+                 
         </Switch>
-      </Router>
+          </Router>
+        
     </div>
   );
 }
