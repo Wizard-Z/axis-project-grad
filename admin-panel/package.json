@@ -19,10 +19,11 @@
     "react-icons": "^4.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "readline-sync": "^1.4.10",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": " set PORT=4000 && react-scripts start",
+    "start": " PORT=4000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
