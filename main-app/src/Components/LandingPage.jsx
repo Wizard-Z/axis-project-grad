@@ -67,6 +67,7 @@ function LandingPage() {
     console.log(id);
     history.push(`/insurance/${id}`);
   };
+
   return (
     <div>
       <main>

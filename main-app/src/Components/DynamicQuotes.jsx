@@ -120,7 +120,14 @@ function DynamicQuotes(props) {
         <div id="showquotes">
           {multipleQuotes.length ? (
             <div>
-              <DropdownButton id="dropdown-basic-button" title="Sort Quotes By">
+              <DropdownButton
+                id="dropdown-basic-button"
+                style={{
+                  width: "200px",
+                  margin: "auto",
+                }}
+                title="Sort Quotes By"
+              >
                 <Dropdown.Item onClick={() => sortDescending()}>
                   Price: Highest to Lowest
                 </Dropdown.Item>
