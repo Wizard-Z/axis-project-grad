@@ -37,7 +37,7 @@ td {
 #but:hover {
   background-color: #b8d6ee;
 }
-
+/* 
 .dropdown {
   position: relative;
   display: inline-block;
@@ -67,4 +67,4 @@ td {
 
 .dropdown:hover .dropdown-content {
   display: flex;
-}
+} */
