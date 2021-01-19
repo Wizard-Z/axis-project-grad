@@ -4,6 +4,9 @@ import "slick-carousel/slick/slick-theme.css";
 
 import PartnerSerivce from "../Service/PartnerService";
 import loadingRing2 from "../images/loadingRing2.gif";
+import SimpleForm from "../Components/SimpleForm.jsx"
+import bot from "../images/bot.png";
+
 
 import {
   Carousel,
@@ -57,6 +60,12 @@ function LandingPage() {
     console.log(id);
     history.push(`/insurance/${id}`);
   };
+    let [showChat, setShowChat] = useState(false);
+
+    const startChat = () => { setShowChat(true); }
+    const hideChat = () => { setShowChat(false); }
+
+
   return (
     <div>
       <main>
@@ -516,7 +525,22 @@ function LandingPage() {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-      </main>
+          </main>
+          <div className="bot">
+              <div style={{ display: showChat ? "" : "none" }}>
+                  <SimpleForm></SimpleForm>
+              </div>
+              {/* <div> {showChat ? <SimpleForm></SimpleForm> : null} </div> */}
+              <div>
+                  {!showChat
+                      ?
+                      <button className="btn"><img className="photo" src={bot} alt="my image" onClick={() => startChat()} /></button>
+                      : <button className="btn"><img className="photo" src={bot} alt="my image" onClick={() => hideChat()} /></button>
+
+                     /* <button className="btn" onClick={() => startChat()}>Click to chat... </button>
+                      : <button className="btn" onClick={() => hideChat()}>Click to hide... </button>*/}
+              </div>
+          </div>
     </div>
   );
 }
