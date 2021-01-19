@@ -1,0 +1,7 @@
+label,type,name,placeholder,validation/required
+City,text,city,Enter your current city,*city is mandatory
+Resident Type,text,residentType,Which resident type(tenant/owner),*Resident-type is mandatory
+Property Type,text,propertyType,Property Type(flat/independent) ,*Property type is mandatory
+Market Value,text,marketValue,Enter Market Value (in INR),*Market Value is mandatory
+Phone Number,text,phoneNumber,Enter phone number
+Email,email,email, Enter email,*Email is mandatory

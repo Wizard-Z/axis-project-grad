@@ -1,2 +1,6 @@
-label;type;name;palceholder;validation
-city;text;city;enter city name;{"required":"*RTO is mandatory" }
+var csv = [
+    "name,birthday/day,birthday/month,birthday/year,house/type,house/address/street,house/address/city,house/address/state,house/occupants",
+    "Lily Haywood,27,3,1995,Igloo,768 Pocket Walk,Honolulu,HI,7",
+    "Stan Marsh,19,10,1987,Treehouse,2001 Bonanza Street,South Park,CO,2"
+  ];
+  export default csv 

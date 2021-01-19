@@ -17,6 +17,7 @@ class AddPartnerForm extends Component {
         available: true,
         feilds: "",
         requestBody: "",
+        selectedFile: null,
       };
     }
     console.log("in constructor:", Object.keys(this.props).length);
@@ -80,6 +81,162 @@ class AddPartnerForm extends Component {
     }
   };
 
+  onFileChange = (event) => {
+    // Update the state
+    this.setState({ selectedFile: event.target.files[0] });
+    let reader = new FileReader();
+
+    var that = this;
+    reader.onload = function () {
+      //let output: any = document.getElementById('blah');
+      // console.log("Reader-->>>", reader.result);
+
+      let csv = reader.result.split("\n");
+
+      console.log("-Lines..", csv);
+      var attrs = csv.splice(0, 1);
+      var result = csv.map(function (row) {
+        var obj = {};
+        var rowData = row.split(",");
+        attrs[0].split(",").forEach(function (val, idx) {
+          obj = constructObj(val, obj, rowData[idx]);
+        });
+        return obj;
+      });
+      function constructObj(str, parentObj, data) {
+        if (str.split("/").length === 1) {
+          parentObj[str] = data;
+          return parentObj;
+        }
+
+        var curKey = str.split("/")[0];
+        if (!parentObj[curKey]) parentObj[curKey] = {};
+        parentObj[curKey] = constructObj(
+          str.split("/").slice(1).join("/"),
+          parentObj[curKey],
+          data
+        );
+        return parentObj;
+      }
+      result = '{"fields":' + JSON.stringify(result) + "}";
+
+      that.setState({ feilds: result });
+      console.log(`Result in onLoad is ${result}`);
+    };
+    if (event.target.files[0]) {
+      reader.readAsText(event.target.files[0]);
+    }
+  };
+
+  onFileUpload = () => {
+    // Create an object of formData
+    if (this.state.selectedFile === null) {
+      alert("Choose file first");
+    } else {
+      console.log("These are fields-->", this.state.feilds);
+      const formData = new FormData();
+      // Update the formData object
+      formData.append(
+        "myFile",
+        this.state.selectedFile,
+        this.state.selectedFile.name
+      );
+      // var reader = new FileReader();
+      // reader.onload = function(event) {
+      //   // The file's text will be printed here
+      //   console.log(reader.result)
+      // };
+
+      // console.log("This is file---->>>", reader.readAsText(formData));
+      // Details of the uploaded file
+      console.log(this.state.selectedFile);
+
+      // Request made to the backend api
+      // Send formData object
+      // axios.post("api/uploadfile", formData);
+      console.log("Uploaded data is:: ", formData);
+    }
+  };
+  fileData = () => {
+    if (this.state.selectedFile) {
+      return (
+        <div>
+          <h2>File Details:</h2>
+          <p>File Name: {this.state.selectedFile.name}</p>
+          <p>File Type: {this.state.selectedFile.type}</p>
+          <p>
+            Last Modified:{" "}
+            {/* {this.state.selectedFile.lastModifiedDate.toDateString()} */}
+          </p>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <br />
+          <h4>Choose before Pressing the Upload button</h4>
+        </div>
+      );
+    }
+  };
+
+  // async function processLineByLine() {
+  //     let csv = []
+  //     const fileStream = fs.createReadStream(formData);
+
+  //     const rl = readline.createInterface({
+  //       input: fileStream,
+  //       crlfDelay: Infinity
+  //     });
+  //     // Note: we use the crlfDelay option to recognize all instances of CR LF
+  //     // ('\r\n') in input.txt as a single line break.
+
+  //     for await (const line of rl) {
+  //       // Each line in input.txt will be successively available here as `line`.
+  //       console.log(`Line from file: ${line}`);
+  //       csv.push(line)
+
+  //     }
+  //     console.log("Inside",csv)
+  //     return csv
+  //   }
+
+  //   async function m(){
+  //     let csv = []
+  //     await processLineByLine().then((res)=>{
+  //       console.log(`--> ${res}`)
+  //       csv = res
+  //     });
+
+  //     console.log("array is:: ",csv)
+
+  // var attrs = csv.splice(0,1);
+
+  // var result = csv.map(function(row) {
+  // var obj = {};
+  // var rowData = row.split(';');
+  // attrs[0].split(';').forEach(function(val, idx) {
+  //   obj = constructObj(val, obj, rowData[idx]);
+  // });
+  // return obj;
+  // })
+  // function constructObj(str, parentObj, data) {
+  //   if(str.split('/').length === 1) {
+  //     parentObj[str] = data;
+  //     return parentObj;
+  //   }
+
+  //   var curKey = str.split('/')[0];
+  //   if(!parentObj[curKey])
+  //     parentObj[curKey] = {};
+  //   parentObj[curKey] = constructObj(str.split('/').slice(1).join('/'), parentObj[curKey], data);
+  //   return parentObj;
+  // }
+
+  // console.log(`Result is:: ${JSON.stringify(result)}`)
+
+  // }
+
   render() {
     const {
       id,
@@ -111,15 +268,18 @@ class AddPartnerForm extends Component {
               placeholder="Enter Id"
             ></input>
             <label htmlFor="name">Partner-name? </label>
-            <select name="name" value={name} onChange={this.onChangeHandle}
-            className="form-control" 
+            <select
+              name="name"
+              value={name}
+              onChange={this.onChangeHandle}
+              className="form-control"
             >
               <option selected>Select partner....</option>
               <option value="TATA AIG">TATA AIG</option>
               <option value="BHARTI AXA">BHARTI AXA</option>
               <option value="AXIS HOME">AXIS HOME</option>
               <option value="RELIANCE">RELIANCE</option>
-              </select>
+            </select>
             <label htmlFor="logo">Logo Url </label>
             <input
               type="text"
@@ -143,15 +303,16 @@ class AddPartnerForm extends Component {
             <label htmlFor="insuranceType">Enter Insurance Type</label>
 
             <select
-            name="insuranceType"
-            value={insuranceType}
-            onChange={this.onChangeHandle}
-            className="form-control">
+              name="insuranceType"
+              value={insuranceType}
+              onChange={this.onChangeHandle}
+              className="form-control"
+            >
               <option selected>Select the Product...</option>
               <option value="CarInsurance"> Car Insurance</option>
               <option value="TravelInsurance"> Travel Insurance</option>
               <option value="HomeInsurance"> Home Insurance</option>
-           </select>
+            </select>
             <label htmlfor="endPoints">End-Points</label>
             <input
               type="text"
@@ -186,6 +347,22 @@ class AddPartnerForm extends Component {
               className="form-control"
               required
             ></textarea>
+            <br />
+            {!feilds && (
+              <div id="uploadFile">
+                <div>
+                  <input type="file" onChange={this.onFileChange} />
+                  <input
+                    type="button"
+                    className="btn btn-primary"
+                    value="upload"
+                    onClick={this.onFileUpload}
+                  ></input>
+                </div>
+                {this.fileData()}
+              </div>
+            )}
+
             <br />
             <input
               type="button"
