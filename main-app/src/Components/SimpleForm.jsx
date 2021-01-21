@@ -19,7 +19,7 @@ class SimpleForm extends Component {
   render() {
     return (
       <div>
-        {this.props.prods.length && (
+       
           <ChatBot
             steps={[
               {
@@ -132,10 +132,12 @@ class SimpleForm extends Component {
                             user: true,
                             trigger: "12",
                             validator: (value) => {
-                                if (!value) {
-                                    return "please fill the age";
-                                } else if (value.length < 1 && value.length >120) {
-                                    return "please enter valid age";
+                                if (isNaN(value)) {
+                                    return 'age must be a number';
+                                } else if (value < 1) {
+                                    return 'age must be atleast 1';
+                                } else if (value > 120) {
+                                    return `${value}? Come on!`;
                                 }
 
                                 return true;
@@ -346,7 +348,7 @@ class SimpleForm extends Component {
               },
             ]}
           />
-        )}
+       
       </div>
     );
   }
