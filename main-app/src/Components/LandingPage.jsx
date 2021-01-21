@@ -540,11 +540,11 @@ function LandingPage() {
       </main>
 
       <div className="bot">
-        {chatBotProducts.length && (
+
           <div style={{ display: showChat ? "" : "none" }}>
             <SimpleForm prods={chatBotProducts}></SimpleForm>
           </div>
-        )}
+
 
         <div>
           {!showChat ? (
