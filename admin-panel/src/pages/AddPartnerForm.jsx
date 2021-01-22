@@ -154,10 +154,10 @@ class AddPartnerForm extends Component {
           <h2>File Details:</h2>
           <p>File Name: {this.state.selectedFile.name}</p>
           <p>File Type: {this.state.selectedFile.type}</p>
-          <p>
+          {/* <p>
             Last Modified:{" "}
-            {/* {this.state.selectedFile.lastModifiedDate.toDateString()} */}
-          </p>
+            {this.state.selectedFile.lastModifiedDate.toDateString()}
+          </p> */}
         </div>
       );
     } else {
