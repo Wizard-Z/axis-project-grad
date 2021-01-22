@@ -82,10 +82,7 @@ class PartnerControlNew(
                     it in currentRequestBody.values
                 }
                 logger.info("\n\n-<<[I am ${partner.name} and I need $lst]>>-\n\n")
-//                val x = JSONObject(partner.feilds).toMap()["fields"] as MutableCollection<*>
                 val y = JSONObject(partner.feilds).get("fields") as JSONArray
-
-//                println("y::$y, y size ${y.length()} ")
 
                 for (i in 0 until y.length()) {
                     val item = y.getJSONObject(i)
@@ -97,8 +94,6 @@ class PartnerControlNew(
 
             }
         }
-
-
         val retArr = field.distinct()
         logger.info("\n\n-<<[Is that you finally want??${field.distinct()}]>>-\n\n")
         return retArr
