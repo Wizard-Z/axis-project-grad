@@ -97,8 +97,11 @@ class PartnerControlNew(
 
             }
         }
-        logger.info("\n\n-<<[Is that you finally want??$field]>>-\n\n")
-        return field
+
+
+        val retArr = field.distinct()
+        logger.info("\n\n-<<[Is that you finally want??${field.distinct()}]>>-\n\n")
+        return retArr
     }
     @ApiOperation("Unique partners list.")
     @GetMapping("/describe-partners")
