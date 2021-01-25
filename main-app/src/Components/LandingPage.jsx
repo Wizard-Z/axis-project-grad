@@ -38,11 +38,20 @@ function LandingPage() {
   }, []);
 
   const [products, setPartners] = useState([]);
+  const [chatBotProducts, setChatBotProducts] = useState([]);
+  // let chatBotProducts = [];
   useEffect(() => {
     PartnerSerivce.getProducts().then((res) => {
       setPartners(res.data);
+      setChatBotProducts(
+        res.data.map((prod) => ({
+          value: prod.productName,
+          label: prod.productName,
+          trigger: "7",
+        }))
+      );
     });
-  }, []);
+  }, products);
 
   const myfunc = (e) => {
     e.preventDefault();
@@ -65,6 +74,7 @@ function LandingPage() {
   const Insurance = (id) => (e) => {
     e.preventDefault();
     console.log(id);
+    console.log("from PROPS: ", chatBotProducts);
     history.push(`/insurance/${id}`);
   };
 
@@ -528,10 +538,13 @@ function LandingPage() {
           </Navbar.Collapse>
         </Navbar>
       </main>
+
       <div className="bot">
-        <div style={{ display: showChat ? "" : "none" }}>
-          <SimpleForm></SimpleForm>
-        </div>
+
+          <div style={{ display: showChat ? "" : "none" }}>
+            <SimpleForm prods={chatBotProducts}></SimpleForm>
+          </div>
+
 
         <div>
           {!showChat ? (

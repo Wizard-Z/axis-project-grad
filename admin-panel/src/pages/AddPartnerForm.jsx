@@ -141,19 +141,9 @@ class AddPartnerForm extends Component {
         this.state.selectedFile,
         this.state.selectedFile.name
       );
-      // var reader = new FileReader();
-      // reader.onload = function(event) {
-      //   // The file's text will be printed here
-      //   console.log(reader.result)
-      // };
 
-      // console.log("This is file---->>>", reader.readAsText(formData));
-      // Details of the uploaded file
       console.log(this.state.selectedFile);
 
-      // Request made to the backend api
-      // Send formData object
-      // axios.post("api/uploadfile", formData);
       console.log("Uploaded data is:: ", formData);
     }
   };
@@ -164,10 +154,10 @@ class AddPartnerForm extends Component {
           <h2>File Details:</h2>
           <p>File Name: {this.state.selectedFile.name}</p>
           <p>File Type: {this.state.selectedFile.type}</p>
-          <p>
+          {/* <p>
             Last Modified:{" "}
-            {/* {this.state.selectedFile.lastModifiedDate.toDateString()} */}
-          </p>
+            {this.state.selectedFile.lastModifiedDate.toDateString()}
+          </p> */}
         </div>
       );
     } else {
@@ -179,63 +169,6 @@ class AddPartnerForm extends Component {
       );
     }
   };
-
-  // async function processLineByLine() {
-  //     let csv = []
-  //     const fileStream = fs.createReadStream(formData);
-
-  //     const rl = readline.createInterface({
-  //       input: fileStream,
-  //       crlfDelay: Infinity
-  //     });
-  //     // Note: we use the crlfDelay option to recognize all instances of CR LF
-  //     // ('\r\n') in input.txt as a single line break.
-
-  //     for await (const line of rl) {
-  //       // Each line in input.txt will be successively available here as `line`.
-  //       console.log(`Line from file: ${line}`);
-  //       csv.push(line)
-
-  //     }
-  //     console.log("Inside",csv)
-  //     return csv
-  //   }
-
-  //   async function m(){
-  //     let csv = []
-  //     await processLineByLine().then((res)=>{
-  //       console.log(`--> ${res}`)
-  //       csv = res
-  //     });
-
-  //     console.log("array is:: ",csv)
-
-  // var attrs = csv.splice(0,1);
-
-  // var result = csv.map(function(row) {
-  // var obj = {};
-  // var rowData = row.split(';');
-  // attrs[0].split(';').forEach(function(val, idx) {
-  //   obj = constructObj(val, obj, rowData[idx]);
-  // });
-  // return obj;
-  // })
-  // function constructObj(str, parentObj, data) {
-  //   if(str.split('/').length === 1) {
-  //     parentObj[str] = data;
-  //     return parentObj;
-  //   }
-
-  //   var curKey = str.split('/')[0];
-  //   if(!parentObj[curKey])
-  //     parentObj[curKey] = {};
-  //   parentObj[curKey] = constructObj(str.split('/').slice(1).join('/'), parentObj[curKey], data);
-  //   return parentObj;
-  // }
-
-  // console.log(`Result is:: ${JSON.stringify(result)}`)
-
-  // }
 
   render() {
     const {
