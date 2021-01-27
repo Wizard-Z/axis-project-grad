@@ -1,3 +1,4 @@
+
 package com.axis.service
 
 import com.axis.com.axis.model.Partner
@@ -162,7 +163,7 @@ class PartnerServiceTest {
                         "Claim Service of the Year Award. Buy New/Renew Car, Health & Bike Insurance Online Now. Get Comprehensive Insurance Solutions by Bharti AXA. 27Lacs+ Claim Settled.",
                 )
         );
-       Mockito.`when`(partnerListRepository?.findAll()).thenReturn(partnerDetailsList);
+        Mockito.`when`(partnerListRepository?.findAll()).thenReturn(partnerDetailsList);
         assertEquals(2, partnerService?.getPartnersDetails()?.size)
 
     }
