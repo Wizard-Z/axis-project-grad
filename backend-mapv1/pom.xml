@@ -20,6 +20,7 @@
 		<jib-maven-plugin.version>2.5.2</jib-maven-plugin.version>
 		<java.version>11</java.version>
 		<kotlin.version>1.4.21</kotlin.version>
+		<sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 	</properties>
 
 	<dependencies>
@@ -72,6 +73,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -84,6 +91,16 @@
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
+		<dependency>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>0.8.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.sonarsource.sonarqube</groupId>
+			<artifactId>sonar-plugin-api</artifactId>
+			<version>8.6.0.39681</version>
+		</dependency>
     </dependencies>
 
 	<build>
@@ -126,7 +143,42 @@
 					</to>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.4.0.905</version>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
 
+				<configuration>
+					<skip>${maven.test.skip}</skip>
+					<destFile>${project.basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
+					<dataFile>${project.basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>
+					<output>file</output>
+					<append>true</append>
+					<excludes>
+						<exclude>*MethodAccess</exclude>
+					</excludes>
+				</configuration>
+				<executions>
+					<execution>
+						<id>jacoco-initialize</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+						<phase>test-compile</phase>
+					</execution>
+					<execution>
+						<id>jacoco-site</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<repositories>
@@ -135,6 +187,7 @@
 			<url>https://jitpack.io</url>
 		</repository>
 	</repositories>
+
 
 
 
