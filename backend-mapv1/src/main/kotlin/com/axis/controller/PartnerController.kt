@@ -1,11 +1,11 @@
 package com.axis.controller
 
 
-import com.axis.com.axis.model.EndPointsStatus
-import com.axis.com.axis.model.Partner
-import com.axis.com.axis.model.PartnerDetail
-import com.axis.com.axis.model.Transaction
-import com.axis.com.axis.repository.TransactionRepository
+import com.axis.model.EndPointsStatus
+import com.axis.model.Partner
+import com.axis.model.PartnerDetail
+import com.axis.model.Transaction
+import com.axis.repository.TransactionRepository
 import com.axis.service.PartnerService
 import io.swagger.annotations.ApiOperation
 import org.json.JSONObject
@@ -32,7 +32,7 @@ class PartnerController(
     @ApiOperation(value = "test connection")
     @GetMapping("/echo")
     fun echo(): String {
-        return "Hello from Spring-boot, AZURE KUBERNETS SERVICE"
+        return "Hello from Spring-boot, AZURE KUBERNETS SERVICE-12"
     }
 
     @ApiOperation(value = "check url response")

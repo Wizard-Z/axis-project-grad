@@ -1,6 +1,6 @@
-package com.axis.com.axis.repository
+package com.axis.repository
 
-import com.axis.com.axis.model.PartnerDetail
+import com.axis.model.PartnerDetail
 import org.springframework.data.mongodb.repository.MongoRepository
 
 interface PartnerListRepository: MongoRepository<PartnerDetail,Int>{

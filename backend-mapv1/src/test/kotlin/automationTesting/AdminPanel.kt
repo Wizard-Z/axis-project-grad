@@ -1,20 +1,16 @@
 package automationTesting
 
 
-import org.junit.Before
 import org.junit.jupiter.api.Test
-import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
-import org.openqa.selenium.remote.server.DriverFactory
-import org.testng.annotations.BeforeMethod
 import java.util.concurrent.TimeUnit
 
 
 class AdminPanel {
 
-    var addProduct: AddProduct? =null
-    var addPartner: AddPartner? =null
+    var product: Product? =null
+    var partner: Partner? =null
     var dashBoard: DashBoard? =null
     @Test
     fun adminPanelTest()
@@ -24,17 +20,17 @@ class AdminPanel {
 
         driver.get("http://localhost:4000/")
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS)
+        driver.manage().window().maximize();
+        product= Product()
+        product!!.login(driver)
+        product!!.addProduct(driver)
+        product!!.enterDetails(driver)
+       // product!!.submit(driver)
 
-        addProduct= AddProduct()
-        addProduct!!.login(driver)
-        addProduct!!.addProduct(driver)
-        addProduct!!.enterDetails(driver)
-        addProduct!!.submit(driver)
 
-
-        addPartner =AddPartner()
-        addPartner!!.addPartner(driver)
-        addPartner!!.enterDetails(driver)
+        partner =Partner()
+        partner!!.addPartner(driver)
+        partner!!.enterDetails(driver)
 
         dashBoard= DashBoard()
         dashBoard!!.dashBoardTest(driver)

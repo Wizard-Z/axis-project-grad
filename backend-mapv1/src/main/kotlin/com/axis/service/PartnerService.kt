@@ -1,11 +1,10 @@
 package com.axis.service
 
-import com.axis.com.axis.model.EndPointsStatus
-import com.axis.com.axis.model.Partner
-import com.axis.com.axis.model.PartnerDetail
-import com.axis.com.axis.repository.PartnerListRepository
-import com.axis.com.axis.repository.PartnerRepository
-import com.axis.com.axis.service.SequenceGeneratorService
+import com.axis.model.EndPointsStatus
+import com.axis.model.Partner
+import com.axis.model.PartnerDetail
+import com.axis.repository.PartnerListRepository
+import com.axis.repository.PartnerRepository
 import khttp.post
 import org.json.JSONObject
 import org.slf4j.LoggerFactory
@@ -19,8 +18,6 @@ import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
-import khttp.post
-import khttp.get
 import khttp.responses.Response
 
 

@@ -1,6 +1,6 @@
-package com.axis.com.axis.repository
+package com.axis.repository
 
-import com.axis.com.axis.model.Product
+import com.axis.model.Product
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.data.mongodb.repository.Query
 import org.springframework.stereotype.Repository

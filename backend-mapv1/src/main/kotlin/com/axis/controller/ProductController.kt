@@ -1,9 +1,9 @@
-package com.axis.com.axis.controller
+package com.axis.controller
 
-import com.axis.com.axis.model.Product
-import com.axis.com.axis.model.Transaction
-import com.axis.com.axis.repository.ProductRepository
-import com.axis.com.axis.repository.TransactionRepository
+import com.axis.model.Product
+import com.axis.model.Transaction
+import com.axis.repository.ProductRepository
+import com.axis.repository.TransactionRepository
 import org.bson.Document
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*

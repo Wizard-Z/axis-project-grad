@@ -1,14 +1,13 @@
-package com.axis.controllerTest
+
+package com.axis.controller
 
 
-import com.axis.com.axis.controller.ProductController
-import com.axis.com.axis.model.Product
-import com.axis.com.axis.model.Transaction
+import com.axis.model.Product
+import com.axis.model.Transaction
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
@@ -17,9 +16,10 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers.print
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import java.time.LocalDateTime
 
-@WebMvcTest(ProductController::class)
+
 @SpringBootTest
 @AutoConfigureMockMvc
+
 class ProductControllerTest{
 
     @Autowired
@@ -146,4 +146,3 @@ class ProductControllerTest{
 
     }
 }
-
