@@ -1,4 +1,12 @@
-on: [push]
+
+name: Build and deploy app to AKS
+
+on:
+  push:
+    branches:
+      - dev2
+
+
 jobs:
   build-package:
     runs-on: ubuntu-latest
