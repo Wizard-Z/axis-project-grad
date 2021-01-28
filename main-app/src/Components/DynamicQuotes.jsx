@@ -1,4 +1,3 @@
-import { useLocation } from "react-router-dom";
 import {
   Card,
   Col,
@@ -14,10 +13,9 @@ import loadingGif from "../images/loading2.gif";
 import MultipleQuotes from "./MultipleQuotes";
 function DynamicQuotes(props) {
   console.log("I am dynamic quotes !");
-  const location = useLocation();
-  const [buttontext, setbuttontext] = useState("Compare Quotes");
+  const [buttonText, setButtonText] = useState("Compare Quotes");
   let quotes = props.location.state.quotes;
-  console.log(quotes);
+  console.log("This is quotes", quotes);
   let productName = props.location.state.productName;
   console.log("Kuch hi", productName);
   let id = props.location.state.id;
@@ -36,10 +34,10 @@ function DynamicQuotes(props) {
     console.log("hello");
 
     var toggle = document.getElementById("showquotes");
-    if (buttontext === "Compare Quotes") {
-      setbuttontext("Hide Quotes");
+    if (buttonText === "Compare Quotes") {
+      setButtonText("Hide Quotes");
     } else {
-      setbuttontext("Compare Quotes");
+      setButtonText("Compare Quotes");
     }
 
     if (toggle.style.visibility === "visible") {
@@ -60,10 +58,6 @@ function DynamicQuotes(props) {
     console.log("This is sorted ascending quotes ", multipleQuotes);
   };
   const sortDescending = (e) => {
-    let tempArr = multipleQuotes.sort((a, b) => {
-      return JSON.parse(b).price - JSON.parse(a).price;
-    });
-
     setMultipleQuotes([
       ...multipleQuotes.sort((a, b) => {
         return JSON.parse(b).price - JSON.parse(a).price;
@@ -94,6 +88,7 @@ function DynamicQuotes(props) {
                     background="#777"
                     color="#777"
                     className="rounded-circle"
+                    alt="logo"
                     src={quo.logo}
                   ></img>
                 </Col>
@@ -112,7 +107,7 @@ function DynamicQuotes(props) {
       <br />
       <div style={{ textAlign: "center", justifyContent: "center" }}>
         <button id="but" onClick={compareQuotes}>
-          {buttontext}
+          {buttonText}
         </button>
         <br />
         <br />

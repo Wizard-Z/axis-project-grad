@@ -24,7 +24,11 @@ function ProductList({ products }) {
             <div className="col-sm-4" key={post.id}>
               <p> </p>
               <div className={post.available ? "card" : "card bg-danger"}>
-                <img className="card-img-top" src={post.imgUrl}></img>
+                <img
+                  className="card-img-top"
+                  src={post.imgUrl}
+                  alt="logo"
+                ></img>
                 <div className="card-body">
                   <h4 className="card-title">{post.productName}</h4>
                   <p className="card-text">{post.productDescription}</p>

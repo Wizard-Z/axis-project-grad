@@ -1,9 +1,6 @@
 import { FaWarehouse } from "react-icons/fa";
-import { FaChartLine } from "react-icons/fa";
-import { FaHandsHelping } from "react-icons/fa";
-import { FaShoppingCart, FaCartPlus } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
 import { MdPersonAdd } from "react-icons/md";
-import { MdPeople, MdInsertChart } from "react-icons/md";
 import { FiLogOut } from "react-icons/fi";
 import {
   FcComboChart,
@@ -201,7 +198,10 @@ export default function Dashboard_copy() {
 
                 <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                   <span>Saved reports</span>
-                  <a className="d-flex align-items-center text-muted">
+                  <a
+                    href="val"
+                    className="d-flex align-items-center text-muted"
+                  >
                     <span data-feather="plus-circle"></span>
                   </a>
                 </h6>

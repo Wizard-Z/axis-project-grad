@@ -6,10 +6,10 @@ class SimpleForm extends Component {
   constructor(props) {
     super(props);
 
-    this.triggetNext = this.triggetNext.bind(this);
+    this.triggerNext = this.triggerNext.bind(this);
   }
 
-  triggetNext() {
+  triggerNext() {
     this.setState({ trigger: true }, () => {
       this.props.triggerNextStep();
     });
@@ -62,7 +62,6 @@ class SimpleForm extends Component {
             },
             {
               id: "product",
-              // options: this.props.prods,
               options: [
                 { value: "carInsurance", label: "Car Insurance", trigger: "7" },
                 {

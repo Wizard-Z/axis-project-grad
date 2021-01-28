@@ -5,7 +5,7 @@ import errorGif from "../images/404.png";
 export default function Error() {
   return (
     <>
-      <img src={errorGif} className="center" width="100%" />
+      <img src={errorGif} className="center" width="100%" alt="error" />
       <Link to="/admin-home">
         <button className="btn btn-outline-primary">Home</button>
       </Link>

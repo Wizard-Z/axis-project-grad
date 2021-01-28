@@ -3,6 +3,7 @@ import { Line } from "react-chartjs-2";
 
 function LineChart({ props }) {
   console.log("In lineChart::", props);
+  // console.log("MAXImum is:", Math.max(props.data));
   /**const data = {
     labels: [
       'Jan',
@@ -45,7 +46,7 @@ function LineChart({ props }) {
         {
           ticks: {
             min: 0,
-            max: 30,
+            max: 50,
             stepSize: 5,
           },
         },

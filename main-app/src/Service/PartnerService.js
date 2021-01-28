@@ -1,5 +1,4 @@
 import axios from 'axios'
-import React, { Component } from 'react'
 const BASE_URL = "http://localhost:9096/api"
 
 export class PartnerSerivce {

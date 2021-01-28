@@ -1,11 +1,4 @@
-import {
-  Card,
-  Col,
-  Jumbotron,
-  Row,
-  DropdownButton,
-  Dropdown,
-} from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 function MultipleQuotes({ multipleQuotes }) {
   console.log(`In Multiquotes:: ${multipleQuotes}`);
   return (
@@ -26,6 +19,7 @@ function MultipleQuotes({ multipleQuotes }) {
                       height="100"
                       background="#777"
                       color="#777"
+                      alt="logo"
                       className="rounded-circle"
                       src={JSON.parse(multi).logo}
                     ></img>

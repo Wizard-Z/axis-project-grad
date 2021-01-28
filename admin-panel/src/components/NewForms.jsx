@@ -1,19 +1,10 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 function NewForms() {
-  const { register, handleSubmit, errors } = useForm();
-  let formdata = [];
+  const { register, handleSubmit } = useForm();
   const [arr, setArr] = useState({ field: [] });
-  const [details, setDetails] = useState({ key: "" });
-  // let csvToJson = require("convert-csv-to-json");
-
-  // let json = csvToJson.getJsonFromCsv("myInputFile.csv");
-  // // console.log("frm file", JSON.stringify(json));
 
   const onSubmit = (data) => {
-    // setArr("," + arr.concat(JSON.stringify(data)));
-    // setArr(arr.push(JSON.stringify(data)));
-
     setArr((prevState) => {
       return {
         ...prevState,
