@@ -1,33 +1,17 @@
-name: Deploy to AKS cluster
+
 on: [push]
 jobs:
-  build-package:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set up JDK 11
-      uses: actions/setup-java@v1
-      with:
-        java-version: 11
-    - name: Build with Maven
-      run: mvn clean verify
-      working-directory: backend-mapv1
-    - name: package
-      run: mvn package
-      working-directory: backend-mapv1
-
   build-and-deploy:
     runs-on: ubuntu-latest
-    needs: [ build-package ]
     steps:
     - uses: actions/checkout@master
-    
+
     - uses: azure/docker-login@v1
       with:
         login-server: insuranceregistry.azurecr.io
         username: ${{ secrets.acr_insuranceregistry_username }}
         password: ${{ secrets.acr_insuranceregistry_password }}
-    
+
     - name: Build and push image to ACR
       id: build-image
       run: |
@@ -38,7 +22,7 @@ jobs:
       with:
          kubeconfig: ${{ secrets.aks_insurancekuber_kubeConfig }}
       id: login
-    
+
     - name: Create namespace
       run: |
         namespacePresent=`kubectl get namespace | grep insurance-dev | wc -l`
@@ -46,7 +30,6 @@ jobs:
         then
             echo `kubectl create namespace insurance-dev`
         fi
-
     - uses: azure/k8s-create-secret@v1
       with:
         namespace: insurance-dev
@@ -54,7 +37,7 @@ jobs:
         container-registry-username: ${{ secrets.acr_insuranceregistry_username }}
         container-registry-password: ${{ secrets.acr_insuranceregistry_password }}
         secret-name: insurancekubdockerauth
-       
+
     - uses: azure/k8s-deploy@v1.2
       with:
         namespace: insurance-dev
@@ -64,4 +47,4 @@ jobs:
         images: |
           insuranceregistry.azurecr.io/insurancekuber:${{ github.sha }}
         imagepullsecrets: |
-          insurancekubdockerauth
+          insurancekubdockerauth 
