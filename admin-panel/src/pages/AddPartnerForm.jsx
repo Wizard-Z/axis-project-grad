@@ -29,29 +29,24 @@ class AddPartnerForm extends Component {
     console.log(`${e.target.name}:${e.target.value}`);
   };
   prettyPrint() {
-    var ugly = document.getElementById("myTextArea").value;
+    var uglyJSON = document.getElementById("myTextArea").value;
     var obj;
     try {
-      obj = JSON.parse(ugly);
+      obj = JSON.parse(uglyJSON);
     } catch (e) {
       alert("Check your JSON at:" + e); // error in the above string (in this case, yes)!
     }
-    var pretty = JSON.stringify(obj, undefined, 4);
-    document.getElementById("myPrettyArea").value = pretty;
+    var prettyJSON = JSON.stringify(obj, undefined, 4);
+    document.getElementById("myPrettyArea").value = prettyJSON;
   }
   onSubmitForm = (e) => {
     e.preventDefault();
-    var obj;
 
     try {
-      obj = JSON.parse(this.state.feilds);
       console.log(`requestBODY from form:: ${this.state.requestBody}`);
-      let parseRequestBody = JSON.parse(this.state.requestBody);
-      // console.log("obj:", obj);
+
       console.log("This is request body", this.state.requestBody);
 
-      //console.log("this is type of ", typeof this.state.requestBody);
-      //  console.log("This is parsed request body" + parseRequestBody["key"]);
       console.log("this is type of ", typeof this.state.requestBody);
 
       console.log("state:", this.state);
@@ -88,9 +83,6 @@ class AddPartnerForm extends Component {
 
     var that = this;
     reader.onload = function () {
-      //let output: any = document.getElementById('blah');
-      // console.log("Reader-->>>", reader.result);
-
       let csv = reader.result.split("\n");
 
       console.log("-Lines..", csv);
@@ -154,10 +146,6 @@ class AddPartnerForm extends Component {
           <h2>File Details:</h2>
           <p>File Name: {this.state.selectedFile.name}</p>
           <p>File Type: {this.state.selectedFile.type}</p>
-          {/* <p>
-            Last Modified:{" "}
-            {this.state.selectedFile.lastModifiedDate.toDateString()}
-          </p> */}
         </div>
       );
     } else {
@@ -182,7 +170,6 @@ class AddPartnerForm extends Component {
       feilds,
       requestBody,
     } = this.state;
-    // this.setState({id:this.props.id})
     console.log("in render:", Object.keys(this.props).length);
     return (
       <div

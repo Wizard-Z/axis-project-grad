@@ -1,7 +1,7 @@
-package com.axis.com.axis.events
+package com.axis.events
 
-import com.axis.com.axis.model.Partner
-import com.axis.com.axis.service.SequenceGeneratorService
+import com.axis.model.Partner
+import com.axis.service.SequenceGeneratorService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.mongodb.core.mapping.event.AbstractMongoEventListener
 import org.springframework.data.mongodb.core.mapping.event.BeforeConvertEvent

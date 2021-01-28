@@ -1,4 +1,4 @@
-package com.axis.com.axis.model
+package com.axis.model
 
 import io.swagger.annotations.ApiModel
 import org.springframework.data.annotation.Id

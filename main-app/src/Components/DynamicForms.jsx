@@ -1,15 +1,13 @@
-import { Card, Modal, Button } from "react-bootstrap";
+import { Card, Modal } from "react-bootstrap";
 import "./demo.css";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import PartnerService from "../Service/PartnerService";
 import { useState, useEffect } from "react";
 
 function DynamicForms(props) {
-  const location = useLocation();
   let fields = JSON.parse(props.location.state.fields);
   let id = props.location.state.id;
-  const [quotes, setQuotes] = useState([]);
   const [additionalFields, setAdditionalFields] = useState([]);
   const [show, setShow] = useState(false);
   const [data, setData] = useState();
@@ -23,7 +21,7 @@ function DynamicForms(props) {
 
   let { register, handleSubmit, errors } = useForm();
 
-  const formgeneration = () => {
+  const formGeneration = () => {
     return newFields.map((field) => (
       <tr>
         <td>
@@ -45,7 +43,7 @@ function DynamicForms(props) {
     ));
   };
 
-  const formgeneration2 = () => {
+  const additionalFormGeneration = () => {
     return additionalFields.map((field) => (
       <tr>
         <td>
@@ -70,14 +68,14 @@ function DynamicForms(props) {
     setShow(false);
     console.log("Modale ", id, data);
   };
-  const additionalData = (additionaldata, e) => {
+  const additionalData = (additionalData, e) => {
     setShow(false);
 
     console.log(
       "Additional Data Fields",
-      typeof JSON.stringify(additionaldata)
+      typeof JSON.stringify(additionalData)
     );
-    PartnerService.getQuotes(id, additionaldata).then((response) => {
+    PartnerService.getQuotes(id, additionalData).then((response) => {
       console.log("inDynamicForm" + response.data);
       history.push({
         pathname: "/insurance/get/Quotes",
@@ -85,7 +83,7 @@ function DynamicForms(props) {
           quotes: response.data,
           productName: productName,
           id: id,
-          data: additionaldata,
+          data: additionalData,
         },
       });
     });
@@ -93,7 +91,6 @@ function DynamicForms(props) {
 
   const onSubmit = (data, e) => {
     console.log(JSON.stringify(data));
-    // let dataStr = data.toS
     setData(data);
 
     if (additionalFields.length === 0) {
@@ -115,7 +112,6 @@ function DynamicForms(props) {
     }
   };
 
-  //Getting additional fields
   useEffect(() => {
     PartnerService.getAdditionalFields(id).then((res) => {
       setAdditionalFields(res.data);
@@ -136,7 +132,7 @@ function DynamicForms(props) {
           </Card>
           <br></br>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <table id="tab">{formgeneration()}</table>
+            <table id="tab">{formGeneration()}</table>
             {additionalFields.length ? (
               <>
                 <Modal show={show} onHide={handleClose}>
@@ -149,7 +145,7 @@ function DynamicForms(props) {
                           </h5>
                         </Card>
                         <form onSubmit={handleSubmit(additionalData)}>
-                          <table id="tab">{formgeneration2()}</table>
+                          <table id="tab">{additionalFormGeneration()}</table>
                           <button type="submit" classname="btn btn-primary">
                             Get Quotes
                           </button>
@@ -160,7 +156,7 @@ function DynamicForms(props) {
                 </Modal>
               </>
             ) : (
-              <h2></h2>
+              <p></p>
             )}
             <button type="submit" classname="btn btn-primary">
               Get Quotes
@@ -172,4 +168,3 @@ function DynamicForms(props) {
   );
 }
 export default DynamicForms;
-///test/get-quote/{id}

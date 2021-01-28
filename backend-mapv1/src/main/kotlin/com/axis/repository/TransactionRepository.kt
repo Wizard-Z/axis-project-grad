@@ -1,6 +1,6 @@
-package com.axis.com.axis.repository
+package com.axis.repository
 
-import com.axis.com.axis.model.Transaction
+import com.axis.model.Transaction
 import org.bson.Document
 import org.springframework.data.mongodb.core.aggregation.AggregationResults
 import org.springframework.data.mongodb.repository.Aggregation

@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-frontend
+spec:
+  selector:
+    matchLabels:
+      app: react-frontend
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: react-frontend
+    spec:
+      containers:
+        - name: react-frontend
+          image: insuranceregistry.azurecr.io/demo/react-frontend:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+
+          # readinessProbe:
+          #   httpGet:
+          #     port: 8080
+          #     path: /
+          # livenessProbe:
+          #   httpGet:
+          #     port: 8080
+          #     path: /
+          # resources:
+          #   requests:
+          #     memory: "128Mi"
+          #     cpu: "100m"
+          #   limits:
+          #     memory: "256Mi"
+          #     cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-frontend-loadbalancer
+spec:
+  type: LoadBalancer
+  selector:
+    app: react-frontend
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000

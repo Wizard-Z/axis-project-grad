@@ -1,4 +1,4 @@
-import { Jumbotron, Container, Row, Col, Card } from "react-bootstrap";
+import { Jumbotron, Container, Row, Card } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import PartnerSerivce from "../Service/PartnerService";
@@ -63,7 +63,7 @@ function PartnersAvailable(props) {
                             boxShadow:
                               "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
                           }}
-                          href="#"
+                          href="button"
                           role="button"
                           onClick={getQuotes(
                             partner.id,
@@ -73,7 +73,6 @@ function PartnersAvailable(props) {
                         >
                           Get Free Quotes &raquo;
                         </a>
-                        {/* </Link> */}
                       </p>
                     </Card.Body>
                   </Card>

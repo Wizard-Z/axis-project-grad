@@ -1,0 +1,12 @@
+apiVersion: skaffold/v1
+kind: Config
+build:
+  artifacts:
+    - image: insuranceregistry.azurecr.io/demos/insurance-backend
+      jib: {}
+  local: {}
+
+deploy:
+  kubectl:
+    manifests:
+      - K8s/*

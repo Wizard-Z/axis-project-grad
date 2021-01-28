@@ -1,8 +1,9 @@
+
 package com.axis.controller
 
 
-import com.axis.com.axis.model.Product
-import com.axis.com.axis.model.Transaction
+import com.axis.model.Product
+import com.axis.model.Transaction
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -145,4 +146,3 @@ class ProductControllerTest{
 
     }
 }
-

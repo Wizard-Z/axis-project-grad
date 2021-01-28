@@ -1,4 +1,4 @@
-package com.axis.com.axis.model
+package com.axis.model
 
 import org.springframework.stereotype.Component
 

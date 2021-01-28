@@ -7,14 +7,11 @@ import Testing from "./Components/Testing";
 import NavBarComponent from "./Components/NavBarComponent";
 import Error from "./Components/Error"
 import DynamicQuotes from "./Components/DynamicQuotes";
-import SimpleForm from "./Components/SimpleForm"
 
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 function App() {
-
-
-  return (
+   return (
     <div className="app">
       <NavBarComponent/>
       <Router>
@@ -27,7 +24,6 @@ function App() {
           ></Route>
           <Route
             exact
-            // path="/insurance/:productName/:name"
             path="/insurance/:product/:name/form"
             component={DynamicForms}
           ></Route>

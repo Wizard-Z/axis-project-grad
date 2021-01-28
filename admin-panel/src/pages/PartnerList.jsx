@@ -10,7 +10,6 @@ export default function PartnerList({ partners }) {
   const [items, setItems] = useState({ content: "", title: "" });
 
   function onToggle(partner) {
-    // parterId = parseInt(parterId);
     console.log("Toggle-clicked", partner);
     setItems({
       title: "Edit/save",
@@ -26,7 +25,7 @@ export default function PartnerList({ partners }) {
             <div className="col-sm-4" key={post.id}>
               <p> </p>
               <div className={post.available ? "card" : "card bg-danger"}>
-                <img className="card-img-top" src={post.logo}></img>
+                <img className="card-img-top" src={post.logo} alt="logo"></img>
                 <div className="card-body">
                   <h4 className="card-title">{post.name}</h4>
                   <p className="card-text">{post.description}</p>

@@ -3,7 +3,6 @@ import BarChart from "../components/BarChart";
 import DoughnutChart from "../components/DoughnutChart";
 import EndPointsService from "../components/EndPointsService";
 import LineChart from "../components/LineChart";
-import loadingGif from "../images/loading2.gif";
 function Plots() {
   const [doughnutData, setDoughnutData] = useState();
   const [barData, setBarData] = useState();
@@ -19,7 +18,6 @@ function Plots() {
         let uniqueTypes = getUnique(res.results, "_id");
         let earnTypes = res.results.map((r) => r.sum);
         let backgroundColor = uniqueTypes.map((l) => getDynamicColor(1));
-        // console.log("--->Doughnut:-->", uniqueTypes, ":::", earnTypes);
         setDoughnutData({
           labels: uniqueTypes,
           datasets: [
@@ -38,7 +36,6 @@ function Plots() {
     EndPointsService.getPartnerWiseEarning()
       .then((response) => {
         let res = response.data;
-        // console.log("IN PLOTS(BAR):", res.results);
 
         let labels = res.results.map((r) => r._id);
         let borderColor = labels.map((l) => getDynamicColor(1));
@@ -46,7 +43,6 @@ function Plots() {
         let earnTypes = res.results.map((r) => r.sum);
         setMaxEarn(1000000);
 
-        // console.log("--->BARGRAPH:-->", labels, ":::");
         setBarData({
           labels: labels,
           datasets: [

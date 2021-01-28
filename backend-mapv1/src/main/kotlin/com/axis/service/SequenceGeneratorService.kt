@@ -1,8 +1,8 @@
-package com.axis.com.axis.service
+package com.axis.service
 
 
 
-import com.axis.com.axis.model.DatabaseSequence
+import com.axis.model.DatabaseSequence
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.mongodb.core.FindAndModifyOptions
 import org.springframework.data.mongodb.core.MongoOperations

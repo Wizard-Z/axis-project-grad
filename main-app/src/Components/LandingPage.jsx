@@ -1,7 +1,6 @@
 import "./landingpage.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import PartnerSerivce from "../Service/PartnerService";
 import loadingRing2 from "../images/loadingRing2.gif";
 import bot from "../images/botIcon6.jpeg";
@@ -29,20 +28,18 @@ function LandingPage() {
     setShowChat(false);
   };
   const history = useHistory();
-  // let { products } = product;
-  const [partners, setProducts] = useState([]);
+  const [partners, setPartners] = useState([]);
   useEffect(() => {
     PartnerSerivce.getPartners().then((res) => {
-      setProducts(res.data);
+      setPartners(res.data);
     });
   }, []);
 
-  const [products, setPartners] = useState([]);
+  const [products, setProducts] = useState([]);
   const [chatBotProducts, setChatBotProducts] = useState([]);
-  // let chatBotProducts = [];
   useEffect(() => {
     PartnerSerivce.getProducts().then((res) => {
-      setPartners(res.data);
+      setProducts(res.data);
       setChatBotProducts(
         res.data.map((prod) => ({
           value: prod.productName,
@@ -159,24 +156,23 @@ function LandingPage() {
                     height="140"
                     background="#777"
                     color="#777"
+                    alt="productLogo"
                     className="rounded-circle"
                   ></img>
                   <h2>{prod.productName}</h2>
                   <p>{prod.productDescription}</p>
                   <p>
-                    <a
+                    <button
                       id={prod.btnId}
                       className="btn btn-secondary"
                       style={{
                         boxShadow:
                           "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
                       }}
-                      href="#"
-                      role="button"
                       onClick={Insurance(prod.productName)}
                     >
                       Show Quotes &raquo;
-                    </a>
+                    </button>
                   </p>
                 </div>
               ))}
@@ -207,6 +203,7 @@ function LandingPage() {
                   "https://tata-cms.s3.ap-south-1.amazonaws.com/Group_1497_cf38de5cfc.svg"
                 }
                 style={{ marginLeft: "105px" }}
+                alt="whyUs"
               ></img>
               <figcaption
                 style={{ color: "rgb(77, 77, 255)", marginLeft: "55px" }}
@@ -221,6 +218,7 @@ function LandingPage() {
                   "https://tata-cms.s3.ap-south-1.amazonaws.com/number_of_customers_d90837fff5.svg"
                 }
                 style={{ marginLeft: "105px" }}
+                alt="whyUs"
               ></img>
               <figcaption
                 style={{ color: "rgb(77, 77, 255)", marginLeft: "55px" }}
@@ -235,6 +233,7 @@ function LandingPage() {
                   "https://tata-cms.s3.ap-south-1.amazonaws.com/instant_policy_dcaa84f54f.svg"
                 }
                 style={{ marginLeft: "105px" }}
+                alt="whyUs"
               ></img>
               <figcaption
                 style={{ color: "rgb(77, 77, 255)", marginLeft: "55px" }}
@@ -249,6 +248,7 @@ function LandingPage() {
                   "https://tata-cms.s3.ap-south-1.amazonaws.com/Group_3624_d8635bfcef.svg"
                 }
                 style={{ marginLeft: "105px" }}
+                alt="whyUs"
               ></img>
               <figcaption
                 style={{ color: "rgb(77, 77, 255)", marginLeft: "55px" }}
@@ -263,6 +263,7 @@ function LandingPage() {
                   "https://tata-cms.s3.ap-south-1.amazonaws.com/Group_3623_60bfbdb020.svg"
                 }
                 style={{ marginLeft: "105px" }}
+                alt="whyUs"
               ></img>
               <figcaption
                 style={{ color: "rgb(77, 77, 255)", marginLeft: "55px" }}
@@ -277,6 +278,7 @@ function LandingPage() {
                   "https://tata-cms.s3.ap-south-1.amazonaws.com/Group_3651_5537ce339f.svg"
                 }
                 style={{ marginLeft: "105px" }}
+                alt="whyUs"
               ></img>
               <figcaption
                 style={{ color: "rgb(77, 77, 255)", marginLeft: "55px" }}
@@ -286,7 +288,7 @@ function LandingPage() {
               </figcaption>
             </figure>
           </Row>
-          <img src={"girl-sofa.png"} className="center"></img>
+          <img src={"girl-sofa.png"} className="center" alt="girlSofa"></img>
         </Jumbotron>
         <Container fluid>
           <h2 className="text-center" style={{ color: "#264a9f" }}>
@@ -502,7 +504,7 @@ function LandingPage() {
               </p>
               <a
                 style={{ color: "#264a9f", marginLeft: "15px" }}
-                href="#"
+                href="showMore"
                 onClick={myfunc}
                 id="myBtn"
               >
@@ -510,7 +512,7 @@ function LandingPage() {
               </a>
             </Col>
             <Col>
-              <img src={"family-kid.png"}></img>
+              <img src={"family-kid.png"} alt="family"></img>
             </Col>
           </Row>
         </Container>
@@ -540,11 +542,9 @@ function LandingPage() {
       </main>
 
       <div className="bot">
-
-          <div style={{ display: showChat ? "" : "none" }}>
-            <SimpleForm prods={chatBotProducts}></SimpleForm>
-          </div>
-
+        <div style={{ display: showChat ? "" : "none" }}>
+          <SimpleForm prods={chatBotProducts}></SimpleForm>
+        </div>
 
         <div>
           {!showChat ? (
@@ -555,6 +555,7 @@ function LandingPage() {
                   "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
                 marginLeft: "250px",
               }}
+              alt="bot"
               width="70"
               height="70"
               background="#777"
@@ -570,6 +571,7 @@ function LandingPage() {
                   "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
                 marginLeft: "250px",
               }}
+              alt="bot"
               width="70"
               height="70"
               background="#777"
