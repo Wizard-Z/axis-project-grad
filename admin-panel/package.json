@@ -10,6 +10,7 @@
     "bootstrap": "^4.5.3",
     "chart.js": "^2.9.4",
     "convert-csv-to-json": "^1.2.0",
+    "dotenv": "^8.2.0",
     "firebase": "^8.2.1",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
