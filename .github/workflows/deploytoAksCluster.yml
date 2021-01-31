@@ -35,7 +35,7 @@ jobs:
     - name: Build and push image to ACR
       id: build-image
       run: |
-        docker build "$GITHUB_WORKSPACE/backend-mapv1" -f  "backend/Dockerfile" -t insuranceregistry.azurecr.io/insuranceteststagging:${{ github.sha }}
+        docker build "$GITHUB_WORKSPACE/backend-mapv1" -f  "backend-mapv1/Dockerfile" -t insuranceregistry.azurecr.io/insuranceteststagging:${{ github.sha }}
         docker push insuranceregistry.azurecr.io/insuranceteststagging:${{ github.sha }}
     
     - uses: azure/k8s-set-context@v1
