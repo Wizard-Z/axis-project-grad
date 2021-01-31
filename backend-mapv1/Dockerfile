@@ -1,4 +1,11 @@
+FROM maven:3.6.3-jdk-11-slim AS build
+RUN mkdir -p /workspace
+WORKDIR /workspace
+COPY pom.xml /workspace
+COPY src /workspace/src
+RUN mvn -B -f pom.xml clean package -DskipTests
+
 FROM openjdk:11.0-slim
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+COPY --from=build /workspace/target/*.jar app.jar
+EXPOSE 9096
+ENTRYPOINT ["java","-jar","app.jar"]
