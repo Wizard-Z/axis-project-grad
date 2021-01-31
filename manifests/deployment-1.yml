@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "insuranceteststagging-a55e"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "insuranceteststagging-a55e"
+  template:
+    metadata:
+      labels:
+        app: "insuranceteststagging-a55e"
+    spec:
+      containers:
+        - name: "insuranceteststagging-a55e"
+          image: "insuranceregistry.azurecr.io/insuranceteststagging"
+          ports:
+          - containerPort: 9096
