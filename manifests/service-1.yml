@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: "insuranceteststagging-a55e"
+    labels:
+        app: "insuranceteststagging-a55e"
+spec:
+    type: LoadBalancer
+    ports:
+    - port: 9096
+      targetPort: 9096
+      protocol: TCP
+      name: http
+    selector:
+        app: "insuranceteststagging-a55e"
