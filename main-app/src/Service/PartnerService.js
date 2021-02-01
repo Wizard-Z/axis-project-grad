@@ -4,10 +4,10 @@ import axios from 'axios'
 export class PartnerSerivce {
     getPartnerByType(category){
         // return axios.get(BASE_URL+"/get-partners/"+category)
-        return axios.get("api/get-partners/"+category)
+        return axios.get(`api/get-partners/${category}`)
     }
     getProducts(){
-        return axios.get("/test/available/products")
+        return axios.get("test/available/products")
         // return axios.get("http://insurance-service:9096/test/available/products")
     }
     getQuotes(id,formData){
