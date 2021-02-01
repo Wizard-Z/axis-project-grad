@@ -40,7 +40,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://insurance-service:9096/",
+  "proxy": "http://insurance-service:9096",
   "eslintConfig": {
     "extends": [
       "react-app",
