@@ -1,7 +1,27 @@
-on: [push]
+name: Deploy to AKS -> production
+on:
+  push: 
+    branches:
+      - 'main'
 jobs:
-  build-and-deploy:
+  build-test:
+    name: Test - Unit tests
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Maven Package
+        run: mvn clean package -DskipTests
+        working-directory: backend-mapv1
+      - name: Maven Verify
+        run: mvn clean verify  
+        working-directory: backend-mapv1
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [ build-test ]
     steps:
     - uses: actions/checkout@master
     
@@ -42,8 +62,7 @@ jobs:
       with:
         namespace: default
         manifests: |
-          manifests/deployment-1.yml
-          manifests/service-2.yml
+          manifests/deployment-backend-production.yml
         images: |
           insuranceregistry.azurecr.io/insurancetestproduction:${{ github.sha }}
         imagepullsecrets: |
