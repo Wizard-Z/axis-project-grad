@@ -1,0 +1,50 @@
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    
+    - uses: azure/docker-login@v1
+      with:
+        login-server: insuranceregistry.azurecr.io
+        username: ${{ secrets.acr_insuranceregistry_username }}
+        password: ${{ secrets.acr_insuranceregistry_password }}
+    
+    - name: Build and push image to ACR
+      id: build-image
+      run: |
+        docker build "$GITHUB_WORKSPACE/backend-mapv1" -f  "backend-mapv1/Dockerfile" -t insuranceregistry.azurecr.io/insurancetestproduction:${{ github.sha }}
+        docker push insuranceregistry.azurecr.io/insurancetestproduction:${{ github.sha }}
+    
+    - uses: azure/k8s-set-context@v1
+      with:
+         kubeconfig: ${{ secrets.aks_insurancetestproduction_kubeConfig }}
+      id: login
+    
+    - name: Create namespace
+      run: |
+        namespacePresent=`kubectl get namespace | grep default | wc -l`
+        if [ $namespacePresent -eq 0 ]
+        then
+            echo `kubectl create namespace default`
+        fi
+
+    - uses: azure/k8s-create-secret@v1
+      with:
+        namespace: default
+        container-registry-url: insuranceregistry.azurecr.io
+        container-registry-username: ${{ secrets.acr_insuranceregistry_username }}
+        container-registry-password: ${{ secrets.acr_insuranceregistry_password }}
+        secret-name: insurancetesdockerauth
+       
+    - uses: azure/k8s-deploy@v1.2
+      with:
+        namespace: default
+        manifests: |
+          manifests/deployment-1.yml
+          manifests/service-2.yml
+        images: |
+          insuranceregistry.azurecr.io/insurancetestproduction:${{ github.sha }}
+        imagepullsecrets: |
+          insurancetesdockerauth
