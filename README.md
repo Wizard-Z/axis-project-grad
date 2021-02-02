@@ -21,7 +21,7 @@ Sample Insurance aggregator application uses **springboot** as backend, **React*
 
 | Category | Main tools used |
 | ------ | ------ |
-| Front-end |  React, Bootstrap, axios, chartjs, simiple-chat-bot, npm|
+| Front-end |  React, Bootstrap, axios, chartjs, simple-chat-bot, npm|
 | Back-end | Spring-boot, MongoDB, mockito, swagger, maven |
 | Dev-ops | github actions, skaffold |
 | Deployment | Azure Kubernetes Service, Azure container registry, ingress, docker |
