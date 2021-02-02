@@ -1,6 +1,7 @@
 # GRAD PROJECT
+![Deploy to AKS -> deployment](https://github.com/Wizard-Z/axis-project-grad/workflows/Deploy%20to%20AKS%20-%3E%20deployment/badge.svg)
 
-**Problem**: Insurance Aggregator.
+**Problem Statement**: Building an Insurance Aggregator application.
 
 ## Description:  
 
@@ -10,6 +11,24 @@
 
 ![Overview](present/Slide3.png "Project-overview")
 
-## Files:
+## Tech-Stack
+
+Sample Insurance aggregator application uses **springboot** as backend, **React** for frontend. Features we demonstrate with this sample app.
+- Routing traffic configured with internal routes. X
+- Dynamic form generation using config based approach.
+- Setting up complete CI/CD workflow using github actions.
+- Deployment to Azure kubernetes service.
+- Health monitoring using ...X
+
+
+
+| Category | Main tools used |
+| ------ | ------ |
+| Front-end |  React, Bootstrap, axios, chartjs, simiple-chat-bot, npm|
+| Back-end | Spring-boot, MongoDB, mockito, swagger, maven |
+| Dev-ops | github actions, skaffold |
+| Deployment | Azure Kubernetes Service, Azure container registry, ingress, docker |
+|Serverless| Amplify|
+
 
 
