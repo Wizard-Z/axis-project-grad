@@ -1,0 +1,116 @@
+name: Deploy to AKS -> production
+on:
+  push: 
+    branches:
+      - 'main'
+jobs:
+  build-test:
+    name: Test - Unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Maven Package
+        run: mvn clean package -DskipTests
+        working-directory: backend-mapv1
+      - name: Maven Verify
+        run: mvn clean verify  
+        working-directory: backend-mapv1
+  deploy-backend:
+    runs-on: ubuntu-latest
+    needs: [ build-test ]
+    steps:
+    - uses: actions/checkout@master
+    
+    - uses: azure/docker-login@v1
+      with:
+        login-server: insuranceregistry.azurecr.io
+        username: ${{ secrets.acr_insuranceregistry_username }}
+        password: ${{ secrets.acr_insuranceregistry_password }}
+    
+    - name: Build and push image to ACR
+      id: build-image
+      run: |
+        docker build "$GITHUB_WORKSPACE/backend-mapv1" -f  "backend-mapv1/Dockerfile" -t insuranceregistry.azurecr.io/insurancetestproduction:${{ github.sha }}
+        docker push insuranceregistry.azurecr.io/insurancetestproduction:${{ github.sha }}
+    
+    - uses: azure/k8s-set-context@v1
+      with:
+         kubeconfig: ${{ secrets.aks_insurancetestproduction_kubeConfig }}
+      id: login
+    
+    - name: Create namespace
+      run: |
+        namespacePresent=`kubectl get namespace | grep default | wc -l`
+        if [ $namespacePresent -eq 0 ]
+        then
+            echo `kubectl create namespace default`
+        fi
+
+    - uses: azure/k8s-create-secret@v1
+      with:
+        namespace: default
+        container-registry-url: insuranceregistry.azurecr.io
+        container-registry-username: ${{ secrets.acr_insuranceregistry_username }}
+        container-registry-password: ${{ secrets.acr_insuranceregistry_password }}
+        secret-name: insurancetesdockerauth
+       
+    - uses: azure/k8s-deploy@v1.2
+      with:
+        namespace: default
+        manifests: |
+          manifests/deployment-backend-production.yml
+        images: |
+          insuranceregistry.azurecr.io/insurancetestproduction:${{ github.sha }}
+        imagepullsecrets: |
+          insurancetesdockerauth
+  deploy-frontend:
+    runs-on: ubuntu-latest
+    needs: [ build-test,deploy-backend ]
+    steps:
+    - uses: actions/checkout@master  
+    - uses: azure/docker-login@v1
+      with:
+        login-server: insuranceregistry.azurecr.io
+        username: ${{ secrets.acr_insuranceregistry_username }}
+        password: ${{ secrets.acr_insuranceregistry_password }}
+    
+    - name: Build and push image to ACR
+      id: build-image
+      run: |
+        docker build "$GITHUB_WORKSPACE/main-app" -f  "main-app/Dockerfile" -t insuranceregistry.azurecr.io/insurancetestproduction/frontend:${{ github.sha }}
+        docker push insuranceregistry.azurecr.io/insurancetestproduction/frontend:${{ github.sha }}
+    
+    - uses: azure/k8s-set-context@v1
+      with:
+         kubeconfig: ${{ secrets.aks_insurancetestproduction_kubeConfig }}
+      id: login
+    
+    - name: Create namespace
+      run: |
+        namespacePresent=`kubectl get namespace | grep default | wc -l`
+        if [ $namespacePresent -eq 0 ]
+        then
+            echo `kubectl create namespace default`
+        fi
+
+    - uses: azure/k8s-create-secret@v1
+      with:
+        namespace: default
+        container-registry-url: insuranceregistry.azurecr.io
+        container-registry-username: ${{ secrets.acr_insuranceregistry_username }}
+        container-registry-password: ${{ secrets.acr_insuranceregistry_password }}
+        secret-name: insurancetesdockerauth
+       
+    - uses: azure/k8s-deploy@v1.2
+      with:
+        namespace: default
+        manifests: |
+          manifests/deployment-frontend-production.yml
+        images: |
+          insuranceregistry.azurecr.io/insurancetestproduction/frontend:${{ github.sha }}
+        imagepullsecrets: |
+          insurancetesdockerauth
