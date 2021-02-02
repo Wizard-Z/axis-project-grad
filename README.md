@@ -14,12 +14,9 @@
 ## Tech-Stack
 
 Sample Insurance aggregator application uses **springboot** as backend, **React** for frontend. Features we demonstrate with this sample app.
-- Routing traffic configured with internal routes. X
 - Dynamic form generation using config based approach.
 - Setting up complete CI/CD workflow using github actions.
 - Deployment to Azure kubernetes service.
-- Health monitoring using ...X
-
 
 
 | Category | Main tools used |
