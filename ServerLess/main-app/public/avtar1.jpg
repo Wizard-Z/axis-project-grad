@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="83" height="83" viewBox="0 0 83 83">
+    <defs>
+        <radialGradient id="prefix__radial-gradient" cx=".5" cy=".5" r=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#92dee2"/>
+            <stop offset=".82" stop-color="#7dcee3"/>
+            <stop offset="1" stop-color="#50a4eb"/>
+        </radialGradient>
+        <linearGradient id="prefix__linear-gradient" x1="1.539" x2=".5" y1="1.336" y2=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#e5e6eb"/>
+            <stop offset="1" stop-color="#eff0f3"/>
+        </linearGradient>
+        <clipPath id="prefix__clip-path">
+            <path id="prefix__Path_10751" fill="#ecfdff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75px" d="M41.5 0A41.5 41.5 0 1 1 0 41.5 41.5 41.5 0 0 1 41.5 0z" data-name="Path 10751" transform="translate(-1530 16251)"/>
+        </clipPath>
+        <style>
+            .prefix__cls-11,.prefix__cls-5{stroke-linecap:round;stroke-linejoin:round}.prefix__cls-5{fill:#263238}.prefix__cls-11,.prefix__cls-5,.prefix__cls-9{stroke:#1a1a1a}.prefix__cls-9{fill:#f6f6f4;stroke-miterlimit:10;stroke-width:1.149px}.prefix__cls-11{fill:none}
+        </style>
+    </defs>
+    <g id="prefix__Group_12437" data-name="Group 12437" transform="translate(-522 -479)">
+        <g id="prefix__Group_12434" data-name="Group 12434">
+            <path id="prefix__Path_10474" fill="url(#prefix__linear-gradient)" d="M41.5 0A41.5 41.5 0 1 1 0 41.5 41.5 41.5 0 0 1 41.5 0z" data-name="Path 10474" transform="translate(522 479)"/>
+            <path id="prefix__Path_10475" fill="url(#prefix__radial-gradient)" d="M41.5 83A41.5 41.5 0 1 0 0 41.5 41.5 41.5 0 0 0 41.5 83z" data-name="Path 10475" opacity="0.56" transform="translate(522 479)"/>
+        </g>
+        <g id="prefix__Mask_Group_178" clip-path="url(#prefix__clip-path)" data-name="Mask Group 178" transform="translate(2052 -15772)">
+            <g id="prefix__Group_12415" data-name="Group 12415" transform="translate(-5 -125.6)">
+                <path id="prefix__Rectangle_2598" d="M21.484 0a21.484 21.484 0 0 1 21.484 21.484v23.761H0V21.484A21.484 21.484 0 0 1 21.484 0z" class="prefix__cls-5" data-name="Rectangle 2598" transform="translate(-1505.237 16388.621)"/>
+                <g id="prefix__Group_12414" data-name="Group 12414" transform="translate(154.5 1345)">
+                    <g id="prefix__Group_12391" data-name="Group 12391" transform="translate(-1674.5 15083.281)">
+                        <path id="prefix__Path_10742" d="M342.035 381.636s-17.414 8.434-17.414 22.853h73.828c0-14.419-18.085-22.853-18.085-22.853" class="prefix__cls-5" data-name="Path 10742" transform="translate(-324.621 -366.143)"/>
+                        <g id="prefix__Group_12390" data-name="Group 12390" transform="translate(18.217)">
+                            <path id="prefix__Path_10743" fill="#f6f6f4" stroke="#1a1a1a" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.13px" d="M362.056 357.5v9.662s-3.128 4.387-11.458 5.831c0 0 4.995 8.268 18.763 8.268 9.606 0 18-8.268 18-8.268s-10.668-2.221-11.443-5.831v-9.637" data-name="Path 10743" transform="translate(-350.598 -357.498)"/>
+                            <path id="prefix__Path_10744" fill="#a8a8a8" d="M368.888 358.189s2.877 6.44 8.713 6.029a5.462 5.462 0 0 0 5.148-4.179l-.41-1.85s-5.25 3.739-13.451 0z" data-name="Path 10744" transform="translate(-357.149 -352.746)" style="mix-blend-mode:multiply;isolation:isolate" opacity="0.38"/>
+                        </g>
+                    </g>
+                    <path id="prefix__Path_10745" fill="#f6f6f4" stroke="#1a1a1a" stroke-miterlimit="10" stroke-width="1.13px" d="M385.548 310.3s1.85 26.629-14.8 26.629S355.43 310.3 355.43 310.3s-.8-15.837 15.88-15.837c15.528.005 14.238 15.837 14.238 15.837z" data-name="Path 10745" transform="translate(-2008.618 14752.758)"/>
+                    <g id="prefix__Group_12392" data-name="Group 12392" transform="translate(-1624.228 15068.596)">
+                        <path id="prefix__Path_10746" d="M400.564 335.131c1.126 1.549 3.3.536 4.562-1.482s1.85-6.053 0-7.146-3.408 1.16-3.408 1.16-.451 4.079-.778 5.605z" class="prefix__cls-9" data-name="Path 10746" transform="translate(-400.564 -326.204)"/>
+                    </g>
+                    <g id="prefix__Group_12393" data-name="Group 12393" transform="translate(-1657.628 15068.596)">
+                        <path id="prefix__Path_10747" d="M354.266 335.131c-1.126 1.549-3.3.536-4.562-1.482s-1.85-6.053 0-7.146 3.408 1.16 3.408 1.16.451 4.079.778 5.605z" class="prefix__cls-9" data-name="Path 10747" transform="translate(-348.527 -326.204)"/>
+                    </g>
+                    <path id="prefix__Path_10748" fill="#263238" d="M244.174 291.553a17.881 17.881 0 0 0-16.309 0c-12.921 6.727-7.529 24.711-7.529 24.711l.064-.776a21.6 21.6 0 0 0 3.353-7.611h24.394a20.688 20.688 0 0 0 3.393 8.115c.031-.345.049-.7.06-1.069l.293 1.341s5.201-17.983-7.719-24.711z" data-name="Path 10748" transform="translate(-1874.127 14754.025)"/>
+                    <circle id="prefix__Ellipse_160" cx="5.895" cy="5.895" r="5.895" class="prefix__cls-11" data-name="Ellipse 160" transform="translate(-1651.085 15063.662)"/>
+                    <circle id="prefix__Ellipse_161" cx="5.895" cy="5.895" r="5.895" class="prefix__cls-11" data-name="Ellipse 161" transform="translate(-1636.604 15063.662)"/>
+                    <path id="prefix__Path_10749" d="M109.557 161.384a1.919 1.919 0 0 1 2.692 0" class="prefix__cls-11" data-name="Path 10749" transform="translate(-1748.853 14908.173)"/>
+                    <path id="prefix__Line_301" d="M2.079 1.635L0 0" class="prefix__cls-11" data-name="Line 301" transform="translate(-1652.941 15069.51)"/>
+                    <path id="prefix__Line_302" d="M0 2.176L2.767 0" class="prefix__cls-11" data-name="Line 302" transform="translate(-1625.026 15068.969)"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

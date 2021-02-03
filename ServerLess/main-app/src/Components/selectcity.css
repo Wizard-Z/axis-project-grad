@@ -1,0 +1,70 @@
+#content {
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-top: 50px;
+  width: 45rem;
+  height: 35rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#cont {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #fa774d;
+  color: white;
+  height: 40px;
+  text-align: center;
+}
+#tab,
+td {
+  width: 400px;
+  margin-left: 200px;
+}
+.btn {
+  width: 200px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#text {
+  width: 400px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 50px;
+  border-radius: 0.5em;
+}
+#but {
+  border-color: teal;
+  border-radius: 0.5em;
+  border: 1px solid;
+  width: 100px;
+}
+#but:hover {
+  background-color: #b8d6ee;
+}
+/* 
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+} */

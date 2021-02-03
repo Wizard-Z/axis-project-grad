@@ -1,0 +1,5 @@
+{
+    "tableName": "productsTable",
+    "partitionKeyName": "id",
+    "partitionKeyType": "N"
+}

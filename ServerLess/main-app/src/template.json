@@ -1,0 +1,50 @@
+{
+    "title": "Select City & RTO",
+    "fields": [
+        {
+            "id":"text",
+            "type": "text",
+            "name": "select",
+            "placeholder":"     Select RTO (e.g. DL04 or Delhi)"
+           
+        }],
+    "cities":[
+        {
+            "id":"dropdown-item-button",
+            "title":"Delhi",
+            "rto": ["DL01","DL02","DL03","DL04"]
+        },
+        {
+            "id":"dropdown-item-button",
+            "title":"Noida",
+            "rto": ["UP01","UP02","UP03"]
+
+        },
+        {
+            "id":"dropdown-item-button",
+            "title":"Maharashtra",
+            "rto": ["MH01","MH02","MH03"]
+
+        },
+        {
+            "id":"dropdown-item-button",
+            "title":"Gurgaon",
+            "rto": ["HR01","HR02","HR03"]
+
+        },
+        {
+            "id":"dropdown-item-button",
+            "title":"Gujrat",
+            "rto": ["GJ01","GJ02","GJ03"]
+
+        },
+        {
+            "id":"dropdown-item-button",
+            "title":"Punjab",
+            "rto": ["PJ01","PJ02","PJ03"]
+
+        }
+    
+    ]  
+    
+}

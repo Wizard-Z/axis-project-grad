@@ -1,0 +1,49 @@
+{
+    "paths": [
+        {
+            "name": "/products",
+            "lambdaFunction": "getProductsAmplify",
+            "privacy": {
+                "protected": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ],
+                "unauth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            },
+            "policyResourceName": "/products"
+        }
+    ],
+    "resourceName": "productsapi",
+    "apiName": "productsapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "getProductsAmplify"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 1,
+        "authRoleName": "amplify-insuranceapp-dev-183215-authRole",
+        "unAuthRoleName": "amplify-insuranceapp-dev-183215-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "getProductsAmplify",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-insuranceapp-dev-183215-authRole",
+      "UnauthRoleArn": "arn:aws:iam::651827480208:role/amplify-insuranceapp-dev-183215-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::651827480208:role/amplify-insuranceapp-dev-183215-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-insuranceapp-dev-183215-deployment",
+      "UnauthRoleName": "amplify-insuranceapp-dev-183215-unauthRole",
+      "StackName": "amplify-insuranceapp-dev-183215",
+      "StackId": "arn:aws:cloudformation:ap-south-1:651827480208:stack/amplify-insuranceapp-dev-183215/b54e3560-648d-11eb-bf8d-02b0fcbd7b3a",
+      "AmplifyAppId": "d32piejsre6dg2"
+    },
+    "categories": {
+      "auth": {
+        "cognitoe31b25b2": {}
+      }
+    }
+  }
+}

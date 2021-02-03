@@ -1,0 +1,143 @@
+{
+    "partners":[
+        {
+            "partnerLogo":"https://tinyurl.com/ycrxbg6g",
+            "partnerName":"Tata Aig",
+            "partnerDescription":" Get Affordable Insurance Plans for Car, Bike, Health & Travel with the Trust of TATA. Quick & Hassle-Free Online Process with No Paperwork. 5 Cr+ Happy Customers. Get Quote. Zero Touch Insurance. Policy in 3 Steps. Comprehensive Plans.",
+            "insuranceType":["Car Insurance","Travel Insurance"],
+            "fields":[
+                {
+                    "CarInsurance":[
+                        {
+                            "label":"City",
+                            "id":"tex",
+                            "type":"text",
+                            "name":"select",
+                            "placeholder":" Enter City eg (Delhi or Mumbai)"
+                        },
+                        {
+                            "label":"RTO",
+                            "id":"tex",
+                            "type":"text",
+                            "name":"select",
+                            "placeholder":" Enter RTO eg (DL01 or MH01)"
+                        },
+                        {
+                            "label":"Brand Name",
+                            "id":"tex",
+                            "type":"text",
+                            "name":"select",
+                            "placeholder":" Enter Brand Name eg (Hyundai or Audi)"
+                
+                        },
+                        {
+                            "label":"Fuel Type",
+                            "id":"tex",
+                            "type":"text",
+                            "name":"select",
+                            "placeholder":" Enter Fuel type eg (Petrol or Diesel)"
+                        },
+                        {
+                            "label":"Model Year",
+                            "id":"tex",
+                            "type":"text",
+                            "name":"select",
+                            "placeholder":" Enter Model Year"
+                        }
+                    ]
+                },
+                {
+                    "TravelInsurance":[
+                        {
+                            "label":"Phone Number",
+                            "id":"tex",
+                            "type":"text",
+                            "name":"select",
+                            "placeholder":" Enter Phone Number"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "partnerLogo":"https://tinyurl.com/ydgvjpgx",
+            "partnerName":"Bharti AXA",
+            "partnerDescription":" Claim Service of the Year Award. Buy New/Renew Car, Health & Bike Insurance Online Now. Get Comprehensive Insurance Solutions by Bharti AXA. 27Lacs+ Claim Settled.",
+            "insuranceType":["Car Insurance","Home Insurance"],
+            "fields":[
+                {
+                    "CarInsurance":[
+                        {
+                            "label":"City",
+                            "id":"tex",
+                            "type":"text",
+                            "name":"select",
+                            "placeholder":" Enter City eg (Delhi or Mumbai)"
+                        },
+                        {
+                            "label":"RTO",
+                            "id":"tex",
+                            "type":"text",
+                            "name":"select",
+                            "placeholder":" Enter RTO eg (DL01 or MH01)"
+                        },
+                        {
+                            "label":"Brand Name",
+                            "id":"tex",
+                            "type":"text",
+                            "name":"select",
+                            "placeholder":" Enter Brand Name eg (Hyundai or Audi)"
+                
+                        },
+                        {
+                            "label":"Fuel Type",
+                            "id":"tex",
+                            "type":"text",
+                            "name":"select",
+                            "placeholder":" Enter Fuel type eg (Petrol or Diesel)"
+                        },
+                        {
+                            "label":"Model Year",
+                            "id":"tex",
+                            "type":"text",
+                            "name":"select",
+                            "placeholder":" Enter Model Year"
+                        },
+                        {
+                            "label":"Phone Number",
+                            "id":"tex",
+                            "type":"text",
+                            "name":"select",
+                            "placeholder":" Enter Phone Number"
+                        }
+                    ]
+                },
+                {
+                    "TravelInsurance":[
+                        {
+                            "label":"Phone Number",
+                            "id":"tex",
+                            "type":"text",
+                            "name":"select",
+                            "placeholder":" Enter Phone Number"
+                        }
+                    ]
+                }
+            ]
+
+        },
+        {
+            "partnerLogo":"https://tinyurl.com/ycrxbg6g",
+            "partnerName":"ICICI",
+            "partnerDescription":" Get Affordable Insurance Plans for Car, Bike, Health & Travel with the Trust of TATA. Quick & Hassle-Free Online Process with No Paperwork. 5 Cr+ Happy Customers. Get Quote. Zero Touch Insurance. Policy in 3 Steps. Comprehensive Plans.",
+            "insuranceType":["Health Insurance","Travel Insurance"]
+        },
+        {
+            "partnerLogo":"https://tinyurl.com/ycrxbg6g",
+            "partnerName":"MAX Insurance",
+            "partnerDescription":" Get Affordable Insurance Plans for Car, Bike, Health & Travel with the Trust of TATA. Quick & Hassle-Free Online Process with No Paperwork. 5 Cr+ Happy Customers. Get Quote. Zero Touch Insurance. Policy in 3 Steps. Comprehensive Plans.",
+            "insuranceType":["Health Insurance","Travel Insurance"]
+        }
+       
+    ]
+}

@@ -1,0 +1,38 @@
+#cards {
+  border-radius: 1.2em;
+  height: auto;
+  width: 500px;
+  padding: 10px;
+  transition: transform 450ms;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#cards:hover {
+  height: auto;
+  padding: 20px;
+  box-shadow: 5px 5px #b6b4b4;
+  transform: scale(1.08);
+}
+#but {
+  background-color: #fa774d;
+  border: 2px solid #ccc;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 9999em;
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 2px 2px 3px #666;
+  box-shadow: 2px 2px 3px #666;
+  font-size: 20px;
+  padding: 4px 7px;
+  outline: 0;
+  -webkit-appearance: none;
+  border-radius: 999em;
+  width: 300px;
+  color: white;
+}
+#but:hover {
+  background-color: #f3521d;
+}
+#showquotes {
+  visibility: hidden;
+}

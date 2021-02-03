@@ -1,0 +1,43 @@
+#content {
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-top: 50px;
+  width: 45rem;
+  height: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#cont {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #fa774d;
+  color: white;
+  height: auto;
+  text-align: center;
+}
+#tab,
+td {
+  width: 400px;
+  margin-left: 200px;
+}
+#tex {
+  width: 400px;
+  height: 40px;
+  border: 2px solid #ccc;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 9999em;
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 2px 2px 3px #666;
+  box-shadow: 2px 2px 3px #666;
+  font-size: 20px;
+  padding: 4px 7px;
+  outline: 0;
+  -webkit-appearance: none;
+}
+#tex:focus {
+  border-color: #89d8f7;
+}
+.modal-content {
+  min-width: 700px;
+  margin: auto;
+}
