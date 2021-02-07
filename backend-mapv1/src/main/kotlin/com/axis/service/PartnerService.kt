@@ -64,7 +64,7 @@ class PartnerService(
         return partnerRepository.findById(id).orElseThrow { Exception("Partner turned down") }
     }
 
-    fun fetchUrl2(endPoint: String, formData: String, requestBody: String?): List<String> {
+    fun fetchPartnerQuote(endPoint: String, formData: String, requestBody: String?): List<String> {
 
         val response = mutableListOf<String>()
         val reqBodyOld = JSONObject(requestBody).toMap()
@@ -114,7 +114,7 @@ class PartnerService(
     fun getQuotes(id: Int, formData: String): String {
         val partner = findById(id)
         val insuranceType = partner.insuranceType
-        val response = fetchUrl2(partner.endPoints, formData, partner.requestBody)
+        val response = fetchPartnerQuote(partner.endPoints, formData, partner.requestBody)
         try {
             return if (response[0] == "2" || response[0] == "3") {
 
@@ -158,21 +158,21 @@ class PartnerService(
         val partners = getPartnerByType(currentPartner.insuranceType)
         val currentRequestBody = JSONObject(currentPartner.requestBody).toMap()
         var reqBody: MutableMap<*, *>
-        var lst: MutableCollection<Any>
+        var requestBodyValues: MutableCollection<Any>
         val fields = mutableListOf<String>()
         for (partner in partners) {
             if (partner.id != id) {
                 reqBody = JSONObject(partner.requestBody).toMap()
-                lst = reqBody.values
-                lst.removeIf {
+                requestBodyValues = reqBody.values
+                requestBodyValues.removeIf {
                     it in currentRequestBody.values
                 }
-                logger.info("\n\n-<<[I am ${partner.name} and I need $lst]>>-\n\n")
-                val y = JSONObject(partner.feilds).get("fields") as JSONArray
+                logger.info("\n\n-<<[I am ${partner.name} and I need $requestBodyValues]>>-\n\n")
+                val partnerFieldsJson = JSONObject(partner.feilds).get("fields") as JSONArray
 
-                for (i in 0 until y.length()) {
-                    val item = y.getJSONObject(i)
-                    if (item.get("name") in lst && item !in fields) {
+                for (i in 0 until partnerFieldsJson.length()) {
+                    val item = partnerFieldsJson.getJSONObject(i)
+                    if (item.get("name") in requestBodyValues && item !in fields) {
                         println("~~~ $item")
                         fields.add(item.toString())
                     }
@@ -180,9 +180,9 @@ class PartnerService(
 
             }
         }
-        val retArr = fields.distinct()
-        logger.info("\n\n-<<[Is that you finally want??${fields.distinct()}]>>-\n\n")
-        return retArr
+        val returnArray = fields.distinct()
+        logger.info("\n\n-<<[Is that what you finally want??${fields.distinct()}]>>-\n\n")
+        return returnArray
 
     }
 
