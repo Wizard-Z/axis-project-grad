@@ -1,0 +1,55 @@
+version: '3.9'
+
+services:
+  database:
+    container_name: mongodb
+    image: sourabhhbar/mongo
+    command: mongod
+    ports:
+    - 27018:27017
+    restart: always
+    volumes:
+    - mongodata:/data/db
+    networks: 
+      - backend
+
+  insurance-backend:
+    image: sourabhhbar/insurance-backend:1
+    container_name: insurance-backend
+    restart: always
+    environment:
+      - spring.data.mongodb.host=database
+      - spring.data.mongodb.port=27017
+      - spring.data.mongodb.database=gradproject
+    ports:
+    - 9096:9096
+    depends_on:
+      - database
+    links: 
+      - database
+    networks: 
+      - backend
+
+  insurance-frontend:
+    image: sourabhhbar/insurance-frontend:1
+    container_name: insurance-frontend
+    restart: always
+    environment: 
+      - REACT_APP_BASE_URL= http://localhost:9096
+    ports:
+    - 3000:3001
+    depends_on:
+      - insurance-backend
+    links:
+      - insurance-backend
+    networks: 
+      - backend
+
+
+networks:
+  backend: 
+    name: micro-net
+volumes:
+  mongodata:
+    driver: local
+
