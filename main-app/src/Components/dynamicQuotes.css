@@ -36,3 +36,17 @@
 #showquotes {
   visibility: hidden;
 }
+.partnerlogo {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 100px;
+  height: 100px;
+  border-radius: 50% !important;
+}
+#dropdown-basic-button {
+  width: 200px;
+  margin: auto;
+}
+.row {
+  text-align: center;
+  justify-content: center;
+}

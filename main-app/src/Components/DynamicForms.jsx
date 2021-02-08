@@ -1,5 +1,5 @@
 import { Card, Modal } from "react-bootstrap";
-import "./demo.css";
+import "./dynamicForms.css";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import PartnerService from "../Service/PartnerService";
@@ -128,7 +128,7 @@ function DynamicForms(props) {
       <Card id="content">
         <Card.Body>
           <Card id="cont">
-            <h5 style={{ marginTop: "5px" }}>{productName}</h5>
+            <h5 >{productName}</h5>
           </Card>
           <br></br>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -140,7 +140,7 @@ function DynamicForms(props) {
                     <Card id="content">
                       <Card.Body>
                         <Card id="cont">
-                          <h5 style={{ marginTop: "5px" }}>
+                          <h5 >
                             Just few more Things..!!!
                           </h5>
                         </Card>

@@ -73,21 +73,14 @@ function DynamicQuotes(props) {
         <h3>Received quotes..</h3>
       </Jumbotron>
       {quotes.map((quo) => (
-        <Row style={{ textAlign: "center", justifyContent: "center" }}>
+        <Row>
           <Card style={{ width: "1000px" }} id="cards">
             <Card.Body>
               <Row>
                 <Col>
-                  <img
-                    style={{
-                      boxShadow:
-                        "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-                    }}
-                    width="100"
-                    height="100"
-                    background="#777"
-                    color="#777"
-                    className="rounded-circle"
+                  <img className="partnerlogo"
+              
+                   
                     alt="logo"
                     src={quo.logo}
                   ></img>
@@ -117,10 +110,7 @@ function DynamicQuotes(props) {
             <div>
               <DropdownButton
                 id="dropdown-basic-button"
-                style={{
-                  width: "200px",
-                  margin: "auto",
-                }}
+
                 title="Sort Quotes By"
               >
                 <Dropdown.Item onClick={() => sortDescending()}>

@@ -1,26 +1,18 @@
 import { Card, Col, Row } from "react-bootstrap";
+import "./dynamicQuotes.css"
 function MultipleQuotes({ multipleQuotes }) {
   console.log(`In Multiquotes:: ${multipleQuotes}`);
   return (
     <div>
       {multipleQuotes.map((multi) => (
         <div>
-          <Row style={{ textAlign: "center", justifyContent: "center" }}>
+          <Row>
             <Card style={{ width: "1000px" }} id="cards">
               <Card.Body>
                 <Row>
                   <Col>
-                    <img
-                      style={{
-                        boxShadow:
-                          "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-                      }}
-                      width="100"
-                      height="100"
-                      background="#777"
-                      color="#777"
-                      alt="logo"
-                      className="rounded-circle"
+                    <img className="partnerlogo"
+                     
                       src={JSON.parse(multi).logo}
                     ></img>
                   </Col>

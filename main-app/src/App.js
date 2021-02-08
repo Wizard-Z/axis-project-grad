@@ -1,47 +1,46 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import LandingPage from "./Components/LandingPage";
-import PartnersAvailable from "./Components/PartnersAvailable";
-import DynamicForms from "./Components/DynamicForms";
-import Testing from "./Components/Testing";
 import NavBarComponent from "./Components/NavBarComponent";
-import Error from "./Components/Error"
-import DynamicQuotes from "./Components/DynamicQuotes";
-
-
+import routeConstants from "./route.js";
+import Error from "./Components/Error";
 import React from "react";
+const {
+  LANDING_PAGE,
+  PARTNERS_AVAILABLE,
+  DYNAMIC_FORMS,
+  DYNAMIC_QUOTES,
+  TESTING,
+} = routeConstants;
 function App() {
-   return (
+  return (
     <div className="app">
-      <NavBarComponent/>
+      <NavBarComponent />
       <Router>
         <Switch>
-          <Route exact path="/" component={LandingPage}></Route>
           <Route
             exact
-            path="/insurance/:id"
-            component={PartnersAvailable}
+            path={LANDING_PAGE.route}
+            component={LANDING_PAGE.name}
           ></Route>
           <Route
             exact
-            path="/insurance/:product/:name/form"
-            component={DynamicForms}
+            path={PARTNERS_AVAILABLE.route}
+            component={PARTNERS_AVAILABLE.name}
           ></Route>
-                    <Route
+          <Route
             exact
-            path="/insurance/get/Quotes"
-            component={DynamicQuotes}
+            path={DYNAMIC_FORMS.route}
+            component={DYNAMIC_FORMS.name}
           ></Route>
-            <Route
+          <Route
             exact
-            path="/testing"
-            component={Testing}
+            path={DYNAMIC_QUOTES.route}
+            component={DYNAMIC_QUOTES.name}
           ></Route>
-          <Route component={Error}/>
-                 
+          <Route exact path={TESTING.route} component={TESTING.name}></Route>
+          <Route component={Error} />
         </Switch>
-          </Router>
-        
+      </Router>
     </div>
   );
 }

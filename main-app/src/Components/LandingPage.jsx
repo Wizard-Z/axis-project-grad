@@ -84,11 +84,11 @@ function LandingPage() {
               className="d-block w-100 h-10"
               src="travel.jpg"
               alt="First slide"
-              height="350px"
+             
             />
             <Carousel.Caption>
-              <h3 style={{ color: "black" }}>Travel Insurance</h3>
-              <p style={{ color: "black" }}>
+              <h3 >Travel Insurance</h3>
+              <p >
                 For stress-free trips, secure your travel with one of our travel
                 insurance plans that suits your needs best
               </p>
@@ -99,11 +99,11 @@ function LandingPage() {
               className="d-block w-100 h-10"
               src="health.jpg"
               alt="Third slide"
-              height="350px"
+          
             />
             <Carousel.Caption>
-              <h3 style={{ color: "black" }}>Health Insurance</h3>
-              <p style={{ color: "black" }}>
+              <h3 >Health Insurance</h3>
+              <p >
                 Secure your Comprehensive protection for the contents of your
                 health
               </p>
@@ -114,11 +114,11 @@ function LandingPage() {
               className="d-block w-100 h-10"
               src="home.jpg"
               alt="Third slide"
-              height="350px"
+            
             />
             <Carousel.Caption>
-              <h3 style={{ color: "black" }}>Home Insurance</h3>
-              <p style={{ color: "black" }}>
+              <h3 >Home Insurance</h3>
+              <p >
                 Secure your Comprehensive protection for the contents of your
                 health
               </p>
@@ -129,11 +129,11 @@ function LandingPage() {
               className="d-block w-100 h-10"
               src="car.jpg"
               alt="Third slide"
-              height="350px"
+            
             />
             <Carousel.Caption>
-              <h3 style={{ color: "black" }}>Motor Insurance</h3>
-              <p style={{ color: "black" }}>
+              <h3 >Motor Insurance</h3>
+              <p >
                 Secure your vehicle against third-party liabilities and other
                 damages. Now Get Motor Insurance issued instantly online
               </p>
@@ -146,18 +146,10 @@ function LandingPage() {
             <div className="row">
               {products.map((prod) => (
                 <div className="col-lg-4">
-                  <img
+                  <img className="logo"
                     src={prod.imgUrl}
-                    style={{
-                      boxShadow:
-                        "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-                    }}
-                    width="140"
-                    height="140"
-                    background="#777"
-                    color="#777"
                     alt="productLogo"
-                    className="rounded-circle"
+                    
                   ></img>
                   <h2>{prod.productName}</h2>
                   <p>{prod.productDescription}</p>
@@ -165,10 +157,6 @@ function LandingPage() {
                     <button
                       id={prod.btnId}
                       className="btn btn-secondary"
-                      style={{
-                        boxShadow:
-                          "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-                      }}
                       onClick={Insurance(prod.productName)}
                     >
                       Show Quotes &raquo;
@@ -178,110 +166,103 @@ function LandingPage() {
               ))}
             </div>
           ) : (
-            <img
+            <img className="gif"
               src={loadingRing2}
               alt="loading.."
-              style={{
-                display: "block",
-                marginLeft: "auto",
-                marginRight: "auto",
-                width: "20%",
-              }}
             />
           )}
         </div>
 
         <Jumbotron>
-          <h2 className="text-center" style={{ color: "#264a9f" }}>
+          <h2 className="text-center">
             Why Insurance Mart
           </h2>
           <br />
           <Row>
             <figure>
-              <img
+              <img className="whyUS"
                 src={
                   "https://tata-cms.s3.ap-south-1.amazonaws.com/Group_1497_cf38de5cfc.svg"
                 }
-                style={{ marginLeft: "105px" }}
+               
                 alt="whyUs"
               ></img>
-              <figcaption
-                style={{ color: "rgb(77, 77, 255)", marginLeft: "55px" }}
+              <figcaption className="fig-caption"
               >
                 1 Cr + Policies Issued
                 <br /> last year
               </figcaption>
             </figure>
             <figure>
-              <img
+              <img className="whyUS"
                 src={
                   "https://tata-cms.s3.ap-south-1.amazonaws.com/number_of_customers_d90837fff5.svg"
                 }
-                style={{ marginLeft: "105px" }}
+              
                 alt="whyUs"
               ></img>
-              <figcaption
-                style={{ color: "rgb(77, 77, 255)", marginLeft: "55px" }}
+              <figcaption className="fig-caption"
+                
               >
                 5 Cr + Customers
                 <br /> Served since Inception
               </figcaption>
             </figure>
             <figure>
-              <img
+              <img className="whyUS"
                 src={
                   "https://tata-cms.s3.ap-south-1.amazonaws.com/instant_policy_dcaa84f54f.svg"
                 }
-                style={{ marginLeft: "105px" }}
+             
                 alt="whyUs"
               ></img>
-              <figcaption
-                style={{ color: "rgb(77, 77, 255)", marginLeft: "55px" }}
+              <figcaption className="fig-caption"
+      
               >
                 5 Cr + Customers
                 <br /> Served since Inception
               </figcaption>
             </figure>
             <figure>
-              <img
+              <img className="whyUS"
                 src={
                   "https://tata-cms.s3.ap-south-1.amazonaws.com/Group_3624_d8635bfcef.svg"
                 }
-                style={{ marginLeft: "105px" }}
+               
                 alt="whyUs"
               ></img>
-              <figcaption
-                style={{ color: "rgb(77, 77, 255)", marginLeft: "55px" }}
+              <figcaption className="fig-caption"
+         
               >
                 5 Cr + Customers
                 <br /> Served since Inception
               </figcaption>
             </figure>
             <figure>
-              <img
+              <img className="whyUS"
                 src={
                   "https://tata-cms.s3.ap-south-1.amazonaws.com/Group_3623_60bfbdb020.svg"
                 }
-                style={{ marginLeft: "105px" }}
+              
                 alt="whyUs"
               ></img>
-              <figcaption
-                style={{ color: "rgb(77, 77, 255)", marginLeft: "55px" }}
+              <figcaption className="fig-caption"
+               
               >
                 5 Cr + Customers
                 <br /> Served since Inception
               </figcaption>
             </figure>
             <figure>
-              <img
+              <img className="whyUS"
                 src={
                   "https://tata-cms.s3.ap-south-1.amazonaws.com/Group_3651_5537ce339f.svg"
                 }
-                style={{ marginLeft: "105px" }}
+               
                 alt="whyUs"
               ></img>
-              <figcaption
-                style={{ color: "rgb(77, 77, 255)", marginLeft: "55px" }}
+              <figcaption className="fig-caption"
+           
               >
                 5 Cr + Customers
                 <br /> Served since Inception
@@ -300,13 +281,7 @@ function LandingPage() {
               {partners.map((part) => (
                 <div className="col-lg-3">
                   <Card
-                    id="cards"
-                    style={{
-                      width: "18rem",
-                      height: "30rem",
-                      textAlign: "justify",
-                      borderRadius: "1em",
-                    }}
+                    id="productcards"
                   >
                     <Card.Img variant="top" src={part.logo} height="150px" />
                     <Card.Body>
@@ -320,27 +295,22 @@ function LandingPage() {
               ))}
             </Row>
           ) : (
-            <img
+            <img className="gif"
               src={loadingRing2}
               alt="loading.."
-              style={{
-                display: "block",
-                marginLeft: "auto",
-                marginRight: "auto",
-                width: "20%",
-              }}
+             
             />
           )}
         </Container>
         <br />
         <br />
         <Container fluid>
-          <h2 className="text-center" style={{ color: "#264a9f" }}>
+          <h2 className="text-center" >
             What Our Customer Say
           </h2>
           <div className="row__posters">
             <div className="row__poster">
-              <Card id="cards" style={{ backgroundColor: "rgb(240,240,240)" }}>
+              <Card id="cards" >
                 <Row>
                   <Card.Img
                     variant="left"
@@ -360,7 +330,7 @@ function LandingPage() {
               </Card>
             </div>
             <div className="row__poster">
-              <Card id="cards" style={{ backgroundColor: " rgb(240,240,240)" }}>
+              <Card id="cards" >
                 <Row>
                   <Card.Img
                     variant="left"
@@ -385,7 +355,7 @@ function LandingPage() {
             </div>
 
             <div className="row__poster">
-              <Card id="cards" style={{ backgroundColor: " rgb(240,240,240)" }}>
+              <Card id="cards" >
                 <Row>
                   <Card.Img
                     variant="left"
@@ -405,7 +375,7 @@ function LandingPage() {
               </Card>
             </div>
             <div className="row__poster">
-              <Card id="cards" style={{ backgroundColor: " rgb(240,240,240)" }}>
+              <Card id="cards" >
                 <Row>
                   <Card.Img
                     variant="left"
@@ -425,7 +395,7 @@ function LandingPage() {
               </Card>
             </div>
             <div className="row__poster">
-              <Card id="cards" style={{ backgroundColor: " rgb(240,240,240)" }}>
+              <Card id="cards" >
                 <Row>
                   <Card.Img
                     variant="left"
@@ -445,7 +415,7 @@ function LandingPage() {
               </Card>
             </div>
             <div className="row__poster">
-              <Card id="cards" style={{ backgroundColor: " rgb(240,240,240)" }}>
+              <Card id="cards" >
                 <Row>
                   <Card.Img
                     variant="left"
@@ -471,8 +441,8 @@ function LandingPage() {
         <Container fluid>
           <Row>
             <Col>
-              <h2 style={{ color: "#264a9f" }}>About Us</h2>
-              <p style={{ color: "#264a9f", textAlign: "justify" }}>
+              <h2 >About Us</h2>
+              <p >
                 Tata AIG General Insurance Company Limited is a joint venture
                 company between Tata Group and American International Group
                 (AIG). Tata AIG General Insurance Company Limited celebrates 20
@@ -503,7 +473,7 @@ function LandingPage() {
                 </span>
               </p>
               <a
-                style={{ color: "#264a9f", marginLeft: "15px" }}
+                
                 href="showMore"
                 onClick={myfunc}
                 id="myBtn"
@@ -520,7 +490,7 @@ function LandingPage() {
           collapseOnSelect
           expand="lg"
           sticky="bottom"
-          style={{ backgroundColor: "rgba(13,53,148,.9)" }}
+         
         >
           <Navbar.Brand href="#home" style={{ color: "white" }}>
             Insurance Mart
@@ -534,7 +504,7 @@ function LandingPage() {
               <Nav.Link
                 href="#aboutUs"
                 id="about"
-                style={{ color: "white" }}
+            
               ></Nav.Link>
             </Nav>
           </Navbar.Collapse>
@@ -548,35 +518,15 @@ function LandingPage() {
 
         <div>
           {!showChat ? (
-            <img
+            <img className="chatlogo"
               src={bot}
-              style={{
-                boxShadow:
-                  "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-                marginLeft: "250px",
-              }}
-              alt="bot"
-              width="70"
-              height="70"
-              background="#777"
-              color="#777"
-              className="rounded-circle"
+     
               onClick={() => startChat()}
             ></img>
           ) : (
-            <img
+            <img className="chatlogo"
               src={bot}
-              style={{
-                boxShadow:
-                  "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-                marginLeft: "250px",
-              }}
-              alt="bot"
-              width="70"
-              height="70"
-              background="#777"
-              color="#777"
-              className="rounded-circle"
+            
               onClick={() => hideChat()}
             ></img>
           )}
