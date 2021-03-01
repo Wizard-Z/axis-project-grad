@@ -1,5 +1,5 @@
 # GRAD PROJECT
-![Deploy to AKS -> deployment](https://github.com/Wizard-Z/axis-project-grad/workflows/Deploy%20to%20AKS%20-%3E%20deployment/badge.svg)
+![Deploy to AKS -> deployment](https://github.com/Wizard-Z/axis-project-grad/workflows/Deploy%20to%20AKS%20-%3E%20deployment/badge.svg?branch=deployment)
 
 **Problem Statement**: Building an Insurance Aggregator application.
 

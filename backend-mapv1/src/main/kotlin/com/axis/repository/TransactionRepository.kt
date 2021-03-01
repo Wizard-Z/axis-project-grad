@@ -11,8 +11,10 @@ import org.springframework.stereotype.Repository
 interface TransactionRepository:MongoRepository<Transaction,Int> {
     @Aggregation(pipeline = ["{\$group:{_id:'\$category',sum:{\$sum:'\$amount' }}}", "{\$sort:{sum:-1}}"])
     fun getCategoryWiseEarnings(): AggregationResults<Document?>?
+
     @Aggregation(pipeline = ["{\$group:{_id:'\$partnerName',sum:{\$sum:'\$amount' }}}", "{\$sort:{sum:-1}}"])
     fun getPartnerWiseEarnings(): AggregationResults<Document?>?
+
     @Aggregation(pipeline = ["{\$group:{_id:{type:\"\$category\",month:{\$month:\"\$purchaseDate\"},year:{\$year:\"\$purchaseDate\"}}, count:{\$sum:1}}}"])
     fun getDateWiseEarnings():AggregationResults<Document?>?
 
