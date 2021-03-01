@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    test: liveness
+  name: liveness-http
+spec:
+  containers:
+    - name: liveness
+      image: sourabhhbar/insurance-backend:1
+      livenessProbe:
+        httpGet:
+          path: /api/echo
+          port: 9096
+          httpHeaders:
+            - name: Accept
+              value: ""
+        initialDelaySeconds: 3
+        periodSeconds: 3

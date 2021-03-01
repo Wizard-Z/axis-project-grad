@@ -3,8 +3,10 @@ package com.axis.service
 import com.axis.model.EndPointsStatus
 import com.axis.model.Partner
 import com.axis.model.PartnerDetail
+import com.axis.model.Transaction
 import com.axis.repository.PartnerListRepository
 import com.axis.repository.PartnerRepository
+import com.axis.repository.TransactionRepository
 import khttp.post
 import org.json.JSONObject
 import org.slf4j.LoggerFactory
@@ -19,6 +21,8 @@ import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
 import khttp.responses.Response
+import org.json.JSONArray
+import java.time.LocalDateTime
 
 
 @Service
@@ -26,7 +30,8 @@ class PartnerService(
     @Autowired val partnerRepository: PartnerRepository,
     @Autowired val sequenceGeneratorService: SequenceGeneratorService,
     @Autowired val mongoTemplate: MongoTemplate,
-    @Autowired val partnerListRepository: PartnerListRepository
+    @Autowired val partnerListRepository: PartnerListRepository,
+    @Autowired val transactionRepository: TransactionRepository
 
 ) {
     final val SITE_IS_UP = "UP"
@@ -59,7 +64,7 @@ class PartnerService(
         return partnerRepository.findById(id).orElseThrow { Exception("Partner turned down") }
     }
 
-    fun fetchUrl2(endPoint: String, formData: String, requestBody: String?): List<String> {
+    fun fetchPartnerQuote(endPoint: String, formData: String, requestBody: String?): List<String> {
 
         val response = mutableListOf<String>()
         val reqBodyOld = JSONObject(requestBody).toMap()
@@ -74,12 +79,10 @@ class PartnerService(
             logger.info("\n\n--<<(CAPTURED FORM DATA:JSON-MAP is ${jsonObj["formData"]})>>\n\n")
 
             val forms = jsonObj["formData"] as MutableMap<*, *>?
-            //TODO: what will happen if the form do not have the data to make the request body -> done
-
             reqBodyOld?.entries?.forEach {
                 reqBodyNew[it.key] = forms?.get(reqBodyOld[it.key]).toString()
             }
-            println("--->>>>SOMETHING")
+            println("---requiredFields---")
             reqBodyNew.entries.forEach {
                 if (it.value == "null")
                     println(reqBodyOld[it.key])
@@ -108,8 +111,10 @@ class PartnerService(
         return response
     }
 
-    fun getQuotes(partner: Partner, formData: String): String {
-        val response = fetchUrl2(partner.endPoints, formData, partner.requestBody)
+    fun getQuotes(id: Int, formData: String): String {
+        val partner = findById(id)
+        val insuranceType = partner.insuranceType
+        val response = fetchPartnerQuote(partner.endPoints, formData, partner.requestBody)
         try {
             return if (response[0] == "2" || response[0] == "3") {
 
@@ -122,6 +127,8 @@ class PartnerService(
                     msg.length - 2
                 ) + "," + "\"logo\":" + "\"" + logo + "\"" + msg.substring(msg.length - 2)
                 println("InSERIVICE: $msg")
+                val price = JSONObject(msg.substring(1, msg.length - 1)).get("price").toString()
+                transactionRepository.save(Transaction(0, price.toDouble(), insuranceType, partner.name, LocalDateTime.now()))
                 msg
 
             } else
@@ -129,6 +136,54 @@ class PartnerService(
         } catch (e: Exception) {
             return INCORRECT_FIELD
         }
+    }
+    fun getMultipleQuotes(formData: String, type:String, id:Int):List<String>{
+        val partners = getPartnerByType(type)
+        val quotes: MutableList<String> = mutableListOf()
+        var quote: String
+        logger.info("\n\n-<<[MULTIQUOTES: Captured Form Data --$formData]>>-\n\n")
+        for (partner in partners) {
+            if (partner.id != id) {
+                quote = getQuotes(partner.id, formData)
+                quote = quote.substring(1, (quote.length - 1))
+                quotes.add(quote)
+            }
+        }
+        println(quotes)
+        return quotes
+    }
+    //TODO: Naming conventions..
+    fun getAdditionalFields(id:Int):List<String>{
+        val currentPartner = findById(id)
+        val partners = getPartnerByType(currentPartner.insuranceType)
+        val currentRequestBody = JSONObject(currentPartner.requestBody).toMap()
+        var reqBody: MutableMap<*, *>
+        var requestBodyValues: MutableCollection<Any>
+        val fields = mutableListOf<String>()
+        for (partner in partners) {
+            if (partner.id != id) {
+                reqBody = JSONObject(partner.requestBody).toMap()
+                requestBodyValues = reqBody.values
+                requestBodyValues.removeIf {
+                    it in currentRequestBody.values
+                }
+                logger.info("\n\n-<<[I am ${partner.name} and I need $requestBodyValues]>>-\n\n")
+                val partnerFieldsJson = JSONObject(partner.feilds).get("fields") as JSONArray
+
+                for (i in 0 until partnerFieldsJson.length()) {
+                    val item = partnerFieldsJson.getJSONObject(i)
+                    if (item.get("name") in requestBodyValues && item !in fields) {
+                        println("~~~ $item")
+                        fields.add(item.toString())
+                    }
+                }
+
+            }
+        }
+        val returnArray = fields.distinct()
+        logger.info("\n\n-<<[Is that what you finally want??${fields.distinct()}]>>-\n\n")
+        return returnArray
+
     }
 
     fun getPartnerByType(type: String): List<Partner> {

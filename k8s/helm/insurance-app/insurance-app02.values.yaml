@@ -1,0 +1,13 @@
+# Default values for insurance-app.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+deploymentBackend:
+  image: "sourabhhbar/insurance-backend"
+  tag: "1"
+  name: "insurance-backend02"
+
+deploymentFrontend:
+  image: "sourabhhbar/insurance-frontend"
+  tag: "1"
+  name: "react-frontend02"
