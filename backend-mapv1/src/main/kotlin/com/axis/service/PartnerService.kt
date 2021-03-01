@@ -144,7 +144,7 @@ class PartnerService(
         logger.info("\n\n-<<[MULTIQUOTES: Captured Form Data --$formData]>>-\n\n")
         for (partner in partners) {
             if (partner.id != id) {
-                quote = getQuotes(id, formData)
+                quote = getQuotes(partner.id, formData)
                 quote = quote.substring(1, (quote.length - 1))
                 quotes.add(quote)
             }

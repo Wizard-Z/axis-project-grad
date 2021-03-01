@@ -22,7 +22,7 @@ services:
       - spring.data.mongodb.port=27017
       - spring.data.mongodb.database=gradproject
     ports:
-    - 9096:9096
+    - 9097:9096
     depends_on:
       - database
     links: 
@@ -35,7 +35,7 @@ services:
     container_name: insurance-frontend
     restart: always
     environment: 
-      - REACT_APP_BASE_URL= http://localhost:9096
+      - REACT_APP_BASE_URL= http://localhost:9097
     ports:
     - 3000:3001
     depends_on:
@@ -47,7 +47,7 @@ services:
 
 
 networks:
-  backend: 
+  backend:  
     name: micro-net
 volumes:
   mongodata:

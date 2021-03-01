@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.deploymentBackend.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.deploymentBackend.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.deploymentBackend.name }}
+    spec:
+      containers:
+        - name: {{ .Values.deploymentBackend.name }}
+          image: {{ .Values.deploymentBackend.image }}:{{ .Values.deploymentBackend.tag }}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9096
+          livenessProbe:
+            httpGet: 
+              path: /actuator/health
+              port: 9096
+            initialDelaySeconds: 100
+            periodSeconds: 8
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.deploymentBackend.name }}
+spec:
+  selector:
+    app: {{ .Values.deploymentBackend.name }}
+  ports:
+    - protocol: TCP
+      port: 9096
+      targetPort: 9096
